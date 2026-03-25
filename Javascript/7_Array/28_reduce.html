@@ -1,0 +1,34 @@
+<!-- 4. reduce()
+
+👉 Reduces array to a single value (left → right).
+
+Syntax:
+
+array.reduce(function(total, value, index, array){ return newTotal }, initialValue)
+Parameters:
+
+function(total, value, index, array) - Function to execute on each element in the array (except for the first element if no initialValue is provided). It takes four arguments:
+total - The accumulated value previously returned in the last invocation of the callback, or initialValue, if supplied.
+value - The current element being processed in the array.
+index - The index of the current element being processed in the array.
+array - The array reduce() was called upon.
+initialValue (optional) - A value to use as the first argument to the first call of the callback. If no initialValue is supplied, the first element in the array will be used and skipped. Calling reduce() on an empty array without an initialValue will throw a TypeError.
+Returns: The single value that results from the reduction.
+
+Real-Life Example: Finding the total cost of shopping items. -->
+
+<!DOCTYPE html>
+<html>
+<body>
+<h2>reduce Example</h2>
+<p id="demo"></p>
+
+<script>
+const prices = [100, 200, 50];
+let total = prices.reduce((sum, price) => sum + price, 0);
+
+
+document.getElementById("demo").innerHTML = "Total Bill: ₹" + total;
+</script>
+</body>
+</html>

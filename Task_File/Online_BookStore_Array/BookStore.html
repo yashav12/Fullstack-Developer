@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BookStore</title>
+</head>
+<style>
+    body{
+        margin:0;
+        padding:0px;
+    }
+    .box {
+        width: 45%;          /* 2 boxes parallel */
+        box-sizing: border-box;
+        border-left: 5px solid #38bdf8;
+        background-color: aliceblue;
+        margin: 12px 0;
+        margin-left:30px;
+        border-radius: 3px;
+    }
+    #output{
+        display: flex;
+        flex-wrap: wrap;      /* next line mein jane ke liye */
+        gap: 15px;
+        padding: 20px;
+}
+
+</style>
+<body>
+    <div style="padding:20px;text-align:center;background:black;color:white">
+        <h1><b>📚 Online BookStore Management</b></h1></div>
+    <div id="output"></div>
+
+    <script>
+ 
+  function show(title, result) {
+    output.innerHTML += `
+      <div class="box">
+       <h2>${title}</h2><br>
+       <h3>${JSON.stringify(result)}</h3>
+      </div>
+    `;
+  }
+  //  Start with an array of books
+  let books = ["Math", "Science", "English"];
+  show(" Initial Books", books); // show hmra function ha jis se output show hoti
+
+  //  Add books using push() and unshift()
+  books.push("History");
+  books.unshift("Computer");
+  show(" After push() & unshift()", books);
+
+  //  Remove books using pop() and shift()
+  books.pop();
+  books.shift();
+  show(" After pop() & shift()", books);
+
+  //  Delete a specific book using splice()
+  const index = books.indexOf("Science");
+  if (index !== -1) {
+    books.splice(index, 1);
+  }
+  show(" After splice() (remove Science)", books);
+
+  //  Merge arrays using concat()
+  const newArrivals = ["Biology", "Physics"];
+  books = books.concat(newArrivals);
+  show(" After concat()", books);
+
+  //  Copy part of array using copyWithin()
+  books.copyWithin(1, 2);     //index 2 se values uthakar , index 1 se paste karta hai
+  show(" After copyWithin()", books);
+
+  //  Flatten nested array using flat()
+  const nestedBooks = ["Math", ["Science", "English"], ["History"]];
+  const flatBooks = nestedBooks.flat();
+  show(" After flat()", flatBooks);
+
+  //  Create a section using slice()
+  const displayBooks = flatBooks.slice(1, 3);
+  show(" After slice()", displayBooks);
+
+  //  Convert array to string
+  show(" toString()", flatBooks.toString());
+  show(" join(' | ')", flatBooks.join(" | "));
+
+  // Find total number of books
+  show(" Total number of books (length)", flatBooks.length);
+
+  //  Replace a book using index
+  flatBooks[2] = "Literature";
+  show(" After updating index", flatBooks);
+
+  //  Display books using forEach()
+  let list = [];
+  flatBooks.forEach((book, i) => {
+    list.push(`Book ${i + 1}: ${book}`);
+  });
+  show(" forEach() Output", list);
+</script>
+</body>
+</html>

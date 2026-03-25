@@ -1,0 +1,19 @@
+<!-- 🎒 Example 2 — Converting an Array into JSON Text -->
+
+<!DOCTYPE html>
+<html>
+<body>
+  <h2>JSON.stringify() Example - Array</h2>
+  <p id="demo"></p>
+
+  <script>
+    const friends = ["John", "Peter", "Sally", "Jane"];
+    console.log(typeof friends);
+    console.log(friends);
+    const myJSON = JSON.stringify(friends);
+    document.getElementById("demo").innerHTML = myJSON;
+    console.log(typeof myJSON);
+    console.log(myJSON);  
+  </script>
+</body>
+</html>

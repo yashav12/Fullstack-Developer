@@ -1,0 +1,23 @@
+<!-- 4. toReversed() – Safe Reverse (ES2023)
+
+👉 Works like reverse(), but keeps original array unchanged.
+📌 Real Life Example: Reversing scores to display without affecting stored data.
+
+Syntax:
+
+array.toReversed() -->
+<!DOCTYPE html>
+<html>
+<body>
+<h2>toReversed() Example</h2>
+<p id="demo"></p>
+
+<script>
+const scores = [10, 20, 30, 40];
+const reversedScores = scores.toReversed();
+
+document.getElementById("demo").innerHTML =
+"Original: " + scores + "<br>Reversed Copy: " + reversedScores;
+</script>
+</body>
+</html>

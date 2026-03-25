@@ -1,0 +1,21 @@
+<!-- 6. splice() – Add or Remove Items
+
+👉 Can insert or delete items from array.
+Real Life Example: Adding or removing fruits from a basket.
+<!DOCTYPE html> -->
+<html>
+<body>
+<h2>Splice Example</h2>
+<p id="demo"></p>
+
+<script>
+const fruits = ["Apple", "Banana", "Mango","Kiwi"];
+ fruits.splice(1, 0, "Orange"); // Add Orange at index 1
+
+ document.getElementById("demo").innerHTML = "After Adding: " + fruits;
+document.write(fruits)
+ fruits.splice(1, 4); // Remove 4 items starting from index 1
+document.getElementById("demo").innerHTML += "<br>After Removing: " + fruits;
+</script>
+</body>
+</html>

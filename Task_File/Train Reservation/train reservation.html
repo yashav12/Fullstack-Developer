@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="style.css">
+<title>Train Reservation System</title>
+</head>
+<body>
+<div class="container">
+
+  <h1>🚆 Train Reservation Dashboard</h1>
+
+  <div class="card">
+    <h3>Passenger List</h3>
+    <table id="passengerTable">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Age</th>
+          <th>Seat</th>
+          <th>Gender</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </div>
+
+  <div class="card">
+    <h3>Operations</h3>
+<button class="btn" onclick="passengerList()">Passenger List</button>
+<button class="btn" onclick="showSeniors()">Senior Citizens</button>
+<button class="btn" onclick="uppercaseNames()">Uppercase Names</button>
+<button class="btn" onclick="totalAge()">Total Age</button>
+<button class="btn" onclick="totalAgeReverse()">Total Age Reverse</button><br>
+<button class="btn" onclick="checkAdults()">Check Adults</button>
+<button class="btn" onclick="checkMinors()">Check Minors</button>
+<button class="btn" onclick="convertSeats()">Convert Seats</button>
+<button class="btn" onclick="addPassengers()">Add Passengers</button>
+<button class="btn" onclick="separateFirst()">Separate First</button>
+<div class="result" id="output"></div>
+</div>
+
+</div>
+
+<script>
+
+// Arrays  
+const names = ["Amit", "Neha", "Raj", "Priya"];
+const ages = [25, 17, 65, 32];
+const seats = [12, 7, 3, 18];
+const genders = ["M", "F", "M", "F"];
+
+const tbody = document.querySelector("#passengerTable tbody");
+const output = document.getElementById("output");
+
+//  Populate Table
+function loadPassengers() {
+  tbody.innerHTML = "";
+  names.forEach((name, i) => {  //Har passenger pe loop.
+    tbody.innerHTML += `
+      <tr>
+        <td>${name}</td>
+        <td>${ages[i]}</td>
+        <td>${seats[i]}</td>
+        <td>${genders[i]}</td>
+      </tr>
+    `;
+  });
+}
+function typeText(text, speed = 40) {
+  output.innerHTML = "";        // clear old text
+
+  let i = 0;
+  const words = text.split(" ");  // word-by-word typing
+
+  function type() {
+    if (i < words.length) {
+      output.innerHTML += words[i] + " ";
+      i++;
+      setTimeout(type, speed);
+    }
+  }
+
+  type();
+}
+typeText("");
+
+loadPassengers();
+function passengerList() {
+  let text = "";
+
+  names.forEach((name, i) => {
+    text += `Passenger - ${name}  Age - ${ages[i]}   Seat - ${seats[i]}   Gender - ${genders[i]}<br> `;
+  });
+
+  typeText(text);
+}
+
+
+// Senior Citizens
+function showSeniors() {
+  const seniors = names.filter((n, i) => ages[i] >= 60);
+typeText(` ${seniors.join(", ")}`);
+}
+
+// Uppercase Names
+function uppercaseNames() {
+  const upper = names.map(n => n.toUpperCase());
+  typeText(` ${upper.join(", ")}`);
+}
+
+// Total Age
+function totalAge() {
+  const total = ages.reduce((sum, age) => sum + age, 0);
+ typeText(` ${total}`);
+}
+// Total Age Reverse (ReduceRight)
+function totalAgeReverse() {
+  const total = ages.reduceRight((sum, age) => sum + age, 0);
+  typeText(`${total}`);
+}
+
+// Check Adults
+function checkAdults() {
+  const adults = ages.every(age => age >= 18);
+
+  if (adults) {
+    typeText("All Passengers Are Adults");
+  } else {
+    typeText("Not All Passengers Are Adults");
+  }
+}
+
+// Check Minors
+function checkMinors() {
+  const minors = ages.some(age => age < 18);
+
+  if (minors) {
+    typeText("Yes, Minor Passenger Found");
+  } else {
+    typeText("No Minor Passenger");
+  }
+}
+
+// Convert Seat String → Array.from
+function convertSeats() {
+  const seatString = "21,22,23,24";
+  const converted = Array.from(seatString.split(","), Number);
+ typeText(`${converted.join(", ")}`);
+}
+
+//  Add Extra Passengers (Spread)
+function addPassengers() {
+  const updated = [...names, "Karan", "Simran"];
+ typeText(` ${updated.join(", ")}`);
+}
+
+//  Separate First Passenger (Rest)
+function separateFirst() {
+  const [first, ...rest] = names;
+
+  typeText(` ${first} Remaining ${rest.join(", ")}`);
+}
+</script>
+
+</body>
+</html>

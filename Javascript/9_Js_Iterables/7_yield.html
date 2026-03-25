@@ -1,0 +1,86 @@
+<!-- 🚦 The yield Keyword Explained
+
+yield = pause here and give this value
+The generator remembers where it stopped and can continue later.
+
+💡 Think of yield like:
+
+“Here’s one value, I’ll wait till you ask for the next one!”
+
+🧩 Generator Object Methods
+Method	What it does
+next()	Resumes generator and gives {value, done}
+return()	Stops generator early and gives a final value
+throw()	Throws an error inside generator
+
+⚙️ Example: Using .next(), .return(), .throw() -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Generator Methods Example</title>
+</head>
+<body>
+  <h2>⚙️ Generator Object Methods</h2>
+  <button onclick="nextFruit()">Next</button>
+  <button onclick="stop()">Stop</button>
+  <button onclick="error()">Throw Error</button>
+  <p id="output"></p>
+
+  <script>
+  function washFruits() {
+      return "🧼 Washing fruits...";
+    }
+
+    function cutFruits() {
+      return "🔪 Cutting fruits into pieces...";
+    }
+
+    function serveFruits() {
+      return "🍽️ Serving the fruit salad...";
+    }
+
+    function* fruits() {   // defines a generator that yields three fruit strings.
+      yield washFruits();  // first task
+      yield cutFruits();   // second task
+      yield serveFruits(); // third task
+      return "✅ All steps done! Enjoy your fruit salad 😋";
+    }
+
+    const gen = fruits();  //
+
+    function nextFruit() {
+      const res = gen.next(); // resumes the generator to get the next fruit.
+      document.getElementById("output").innerText = JSON.stringify(res);
+      console.log(res);
+    }
+
+    function stop() {
+      const res = gen.return("🚫 Generator stopped"); // stops the generator immediately and returns { value, done: true }.
+      document.getElementById("output").innerText = JSON.stringify(res);
+      console.log(res);
+    }
+
+    function error() {
+      try {
+        const res = gen.throw("💥 Error occurred"); //injects an exception into the paused generator; if the generator doesn't catch it, the exception propagates out and the generator is closed.
+        document.getElementById("output").innerText = JSON.stringify(res);
+      } catch (e) {
+        document.getElementById("output").innerText = e;
+      }
+      console.log(res);
+    }
+  </script>
+</body>
+</html>
+
+
+<!-- | Feature                                    | **Generator**            | **Events**                            |
+| ------------------------------------------ | ------------------------ | ------------------------------------- |
+| **Pauses execution naturally**             | ✅ Yes (`yield`)          | ❌ No (manual control)                 |
+| **Remembers previous state automatically** | ✅ Yes                    | ❌ Must handle manually                |
+| **Error handling (`throw()`)**             | ✅ Built-in               | ⚠️ Manual using try/catch             |
+| **Stop function (`return()`)**             | ✅ Yes                    | ⚠️ Must simulate                      |
+| **Async-like control flow**                | ✅ Smooth                 | ⚠️ Callback-based                     |
+| **Use case**                               | Sequential logic (steps) | Independent actions (UI, user inputs) | -->

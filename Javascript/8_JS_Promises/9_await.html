@@ -1,0 +1,25 @@
+<!-- await pauses the function until the promise completes
+ it can be used only inside async fucntions -->
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+ </head>
+ <body>
+    <h2>Await Function</h2>
+    <p id="demo"></p>
+    <script>
+        async function print(){
+    document.getElementById("demo").innerHTML="Pizza's process is starting...";
+
+            let result = await new Promise(resolve => 
+            setTimeout(()=> resolve("pizza is ready"),3000)
+        );
+            document.getElementById("demo").innerHTML=result;
+        }
+        print();
+    </script>
+ </body>
+ </html>

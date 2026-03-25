@@ -1,0 +1,31 @@
+<!-- 🔹 What is slice()?
+
+The slice() method in JavaScript is used to copy a portion of an array into a new array without changing the original array.
+
+🔹 Syntax
+array.slice(start, end)
+
+
+start → The index where the copy begins (included).
+
+end → The index where the copy ends (not included).
+
+If end is not given, it slices till the end of array.
+
+Indexing starts from 0. -->
+
+<!DOCTYPE html>
+<html>
+<body>
+<h2>Slice Example</h2>
+<p id="demo"></p>
+
+<script>
+const players = ["Rohit", "Virat", "Dhoni", "Sachin"];
+const top2 = players.slice(2,4); // Copies from index 2 to end
+
+document.getElementById("demo").innerHTML = 
+"Top 2 Players: " + top2 + "<br>Original Team: " + players;
+</script>
+</body>
+</html>

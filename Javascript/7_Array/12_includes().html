@@ -1,0 +1,29 @@
+<!-- 3. includes()
+
+👉 Checks if an element exists in the array. Returns true/false.
+
+Syntax
+
+array.includes(item)
+
+item → what you want to search.
+
+Real-Life Example
+
+🛒 Checking if "Mango" is in your shopping list. -->
+
+<!DOCTYPE html>
+<html>
+<body>
+<h2>includes Example</h2>
+<p id="demo"></p>
+
+<script>
+const fruits = ["Banana", "Orange", "Apple", "Mango"];
+let result = fruits.includes("Mango"); // true
+
+document.getElementById("demo").innerHTML =
+"Is Mango in the list? " + result;
+</script>
+</body>
+</html>

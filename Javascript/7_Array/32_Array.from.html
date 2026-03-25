@@ -1,0 +1,25 @@
+<!-- 8. Array.from()
+
+👉 Converts iterable objects (like strings) into arrays.
+
+Syntax:
+
+Array.from(object, mapFunction)
+
+Real-Life Example: Breaking a word into letters. -->
+
+<!DOCTYPE html>
+<html>
+<body>
+<h2>Array.from Example</h2>
+<p id="demo"></p>
+
+<script>
+let word = "HELLO";
+let letters = Array.from(word);
+
+document.getElementById("demo").innerHTML = letters;
+console.log(letters);
+</script>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!-- 🌐 What is a Web API (Simple Explanation)
+
+🧠 API stands for Application Programming Interface — it’s like a menu in a restaurant.
+
+Imagine you go to a restaurant 🍽️ —
+You don’t go into the kitchen to cook yourself.
+You ask the waiter (API) for what you want, and they bring it from the kitchen (system).
+
+Similarly, a Web API is a way for your JavaScript code to ask the browser or server to do something — like find your location, record your voice, or validate a form.
+
+| Type                    | Description                                                                                             | Example                        |
+| ----------------------- | ------------------------------------------------------------------------------------------------------- | ------------------------------ |
+| 🧭 **Browser APIs**     | Built directly into the browser to help you do things like get location, draw on canvas, or store data. | `navigator.geolocation`        |
+| 🌍 **Third-Party APIs** | Created by other companies (not built into browser). You include them from the web.                     | YouTube API, Twitter API, etc. |
+
+🧭 Example 1: Browser API – Geolocation API
+
+The Geolocation API helps us find where the user is on Earth 🌍 using the device’s GPS or network.
+
+👉 Real-life example: Just like when Google Maps asks for your location to show nearby restaurants 🍕. -->
+
+<!DOCTYPE html>
+<html>
+<body>
+  <h2>📍 Find My Location (Browser API)</h2>
+  <button onclick="getLocation()">Get Location</button>
+  <p id="demo"></p>
+
+  <script>
+    const myElement = document.getElementById("demo");
+
+    function getLocation() {
+      // Check if browser supports location API
+      if (navigator.geolocation) {
+        myElement.innerHTML = "⏳ Getting your location...";
+        navigator.geolocation.getCurrentPosition(showPosition);
+      } else {
+        myElement.innerHTML = "❌ Geolocation not supported in this browser.";
+      }
+    }
+
+    function showPosition(position) {
+      myElement.innerHTML =
+        "✅ Latitude: " + position.coords.latitude +
+        "<br>✅ Longitude: " + position.coords.longitude;
+    }
+  </script>
+</body>
+</html>

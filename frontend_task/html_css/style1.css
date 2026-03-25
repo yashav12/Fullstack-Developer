@@ -1,0 +1,81 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    /* font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; */
+}
+.navbar{
+    display:flex;
+    justify-content: space-between;
+    /* justify-content: center; */
+    text-align: center;
+    padding:40px;
+    background-color: rgb(127, 184, 215);
+}
+.nav{
+    margin-top: 10px;
+}
+.nav a{
+    margin:40px;
+    text-decoration: none;
+    font-size:larger;
+    color:black;
+}
+
+.image img{
+    height: 200px;
+    width: 200px;
+    border-radius: 50%;
+}
+.des{
+    display:flex;
+    padding:30px;
+}
+.about{
+    padding:30px;
+}
+.about pre{
+    padding:20px;
+    font-size:20px;
+    font-family:Times New Roman;
+}
+pre{
+    padding:10px;
+}
+.qual ul{
+    margin-left: 30px;
+    padding:20px;
+    font-size:20px;
+    font-family:Times New Roman;
+}
+.qual{
+      margin-left:30px;
+}
+.skills ul{
+    margin-left: 30px;
+    padding:20px;
+    font-size:20px;
+    font-family:Times New Roman;
+}
+.skills{
+      margin-left:30px;
+}
+.project ul{
+    margin-left: 30px;
+    padding:20px;
+    font-size:20px;
+    font-family:Times New Roman;
+}
+.project{
+    margin-left:30px;
+}
+.contact p{
+    margin-left:30px;
+    font-size: 20px;
+    padding:10px;
+}
+body{
+    background-image: url(bg.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}

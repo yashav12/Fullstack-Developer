@@ -1,0 +1,21 @@
+<!-- Stringify a Date
+
+Dates are not supported in JSON — they get converted to text automatically. -->
+
+<!DOCTYPE html>
+<html>
+<body>
+  <h2>JSON.stringify() Example - Date</h2>
+  <p id="demo"></p>
+
+  <script>
+    const obj = {name: "John", today: new Date(), city: "New York"};
+    console.log(typeof obj);
+    console.log(obj);
+    const myJSON = JSON.stringify(obj);
+    document.getElementById("demo").innerHTML = myJSON;
+    console.log(typeof myJSON);
+    console.log(myJSON);
+  </script>
+</body>
+</html>

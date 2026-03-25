@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>School Result Management System</title>
+  <style>
+    body {
+      padding: 0px;
+      margin:0px;
+    }
+
+    .box {
+      background: white;
+      border-left: 5px solid #38bdf8;
+      padding: 12px;
+      margin: 10px 0;
+      border-radius: 6px;
+      font-size: 16px;
+    }
+    strong {
+      color: #020617;
+    }
+  </style>
+</head>
+<body>
+<div style="text-align: center;
+      background: #020617;
+      color: white;
+      padding: 15px;
+      border-radius: 8px;">
+
+<h1>School Result Management System</h1>
+</div>
+<div id="output"></div>
+
+<script>
+  const output = document.getElementById("output");
+
+  function show(text) {
+    output.innerHTML += `
+      <div class="box">${text}</div>`;
+  }
+
+  // Data
+  const students = ["Rahul", "Priya", "Aman", "Rahul", "Neha"];
+  const marks = [25, 35, 45, 60, 75];
+
+  // indexOf
+  show(`<strong>First Rahul is at index →</strong> ${students.indexOf("Rahul")}`);
+
+  // lastIndexOf
+  show(`<strong>Last Rahul is at index →</strong> ${students.lastIndexOf("Rahul")}`);
+
+  // includes
+  show(`<strong>Neha is enrolled →</strong> ${students.includes("Neha")}`);
+
+  // find (marks > 40)
+  const firstPassingMarks = marks.find(m => m > 40);
+  show(`<strong>First passing marks →</strong> ${firstPassingMarks}`);
+
+  // findIndex (marks > 40)
+  const firstPassingIndex = marks.findIndex(m => m > 40);
+  show(`<strong>First passing student index →</strong> ${firstPassingIndex}`);
+
+  // findLast (marks > 50)
+  const lastAbove50 = marks.findLast(m => m > 50);
+  show(`<strong>Last student scoring above 50 →</strong> ${lastAbove50}`);
+
+  // findLastIndex (marks > 40)
+  const lastPassingIndex = marks.findLastIndex(m => m > 40);
+  show(`<strong>Last passing student index →</strong> ${lastPassingIndex}`);
+</script>
+
+</body>
+</html>

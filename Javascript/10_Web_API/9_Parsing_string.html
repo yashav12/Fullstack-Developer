@@ -1,0 +1,43 @@
+<!-- 🧠 What is JSON.parse()?
+
+When we receive data from a web server or API, it is always sent as text (a string) — not as a real JavaScript object.
+
+But we can’t work directly with text like this:
+
+"{name: 'John'}"
+So, we need a way to convert this text into a real JavaScript object that our code can use — and that’s where JSON.parse() comes in!
+
+👉 In simple words:
+
+JSON.parse() = Converts JSON string → JavaScript object
+
+📦 Example 1: Parsing JSON Text
+🎯 Scenario:
+
+Imagine your app fetches user data from a server:
+
+'{"name":"John", "age":30, "city":"New York"}'
+This is a string, not an object yet. -->
+
+<!DOCTYPE html>
+<html>
+<body>
+  <h2>📜 JSON.parse() Example</h2>
+  <p id="demo"></p>
+
+  <script>
+    // Step 1: This is the text we received from a server
+    const jsonText = '{"name":"John", "age":30, "city":"New York"}';
+console.log(typeof jsonText);
+console.log(jsonText);
+ // string
+    // Step 2: Convert (parse) JSON text into a JavaScript object
+    const obj = JSON.parse(jsonText);
+console.log(typeof obj); // object
+console.log(obj);
+    // Step 3: Now we can use it like a normal JS object
+    document.getElementById("demo").innerHTML =
+      `👤 Name: ${obj.name} <br>🎂 Age: ${obj.age} <br>🏙️ City: ${obj.city}`;
+  </script>
+</body>
+</html>

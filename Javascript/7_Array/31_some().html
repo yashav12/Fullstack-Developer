@@ -1,0 +1,20 @@
+<!-- 7. some()
+
+👉 Checks if at least one element passes a test.
+
+Real-Life Example: Is there any minor (below 18)? -->
+
+<!DOCTYPE html>
+<html>
+<body>
+<h2>some Example</h2>
+<p id="demo"></p>
+
+<script>
+const ages = [19, 18, 22];
+let hasMinor = ages.some(a => a <= 18);
+
+document.getElementById("demo").innerHTML = "Any minor? " + hasMinor;
+</script>
+</body>
+</html>

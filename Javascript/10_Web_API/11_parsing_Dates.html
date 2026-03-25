@@ -1,0 +1,27 @@
+<!-- Parsing Dates
+JSON does not support Date objects directly.
+Dates must be sent as strings, and then we can convert them manually.
+Example: -->
+
+<!DOCTYPE html>
+<html>
+<body>
+  <h2>📅 JSON.parse() - Converting Dates</h2>
+  <p id="demo"></p>
+
+  <script>
+    const text = '{"name":"John", "birth":"1986-12-14", "city":"New York"}';
+    console.log(typeof text);
+    console.log(text);
+    const obj = JSON.parse(text);
+
+    // Convert string into real Date object
+    obj.birth = new Date(obj.birth);
+
+    document.getElementById("demo").innerHTML =
+      `${obj.name} was born on ${obj.birth.toDateString()}`;
+      console.log(typeof obj); // object
+      console.log(obj); 
+  </script>
+</body>
+</html>

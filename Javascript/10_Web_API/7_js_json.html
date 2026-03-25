@@ -1,0 +1,162 @@
+<!-- 🧠 What is JSON?
+
+-> JSON stands for JavaScript Object Notation.
+-> Think of JSON as a “universal language for data” that helps different computers or programs talk to each other.
+
+💬 Real-Life Analogy
+
+-> Imagine you order food from Zomato 🍕.
+ When you open the app, you see the restaurant’s menu, your past orders, and delivery status.
+
+➡️ All that data (restaurant name, price, delivery time, etc.) travels between your phone and Zomato’s server in JSON format.
+-> Example data sent by Zomato’s server:
+
+{
+  "restaurant": "Pizza Palace",
+  "items": ["Margherita", "Pepperoni"],
+  "status": "Preparing"
+}
+
+So JSON is just text data that looks like JavaScript objects — easy for humans to read and computers to understand.
+📜 JSON Syntax Rules:
+{
+  "employees": [
+    {"firstName": "John", "lastName": "Doe"},
+    {"firstName": "Anna", "lastName": "Smith"},
+    {"firstName": "Peter", "lastName": "Jones"}
+  ]
+}
+
+-> Data is in key/value pairs: "name": "John"
+-> Data is separated by commas: "age": 30, "city": "New York
+-> Curly braces hold objects: { "name": "John", "age": 30 }
+-> Square brackets hold arrays: "items": ["item1", "item2"]
+-> Keys must be strings (in double quotes).
+-> Values can be strings, numbers, arrays, objects, true/false, or null.
+-> JSON is language-independent but uses conventions familiar to programmers of the C family of languages (like JavaScript, Python, Java, etc.).
+
+🧩 Why Use JSON?
+-> It’s lightweight and easy to read/write.
+-> It’s easy for machines to parse and generate.
+-> It’s widely used in web APIs to exchange data between clients and servers.
+-> It works well with JavaScript since it’s based on JavaScript object syntax. 
+ 
+🧾 Example: Display Employee Details from JSON -->
+
+ <!-- <!DOCTYPE html>
+<html>
+<head>
+  <title>JSON Example</title>
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #f7f9fc;
+      text-align: center;
+      padding: 40px;
+    }
+    h2 {
+      color: #2c3e50;
+    }
+    .employee-card {
+      background: white;
+      width: 300px;
+      margin: 15px auto;
+      padding: 15px;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+    .employee-card:hover {
+      transform: scale(1.03);
+      transition: 0.3s;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>📋 Employee Details (from JSON)</h2>
+  <div id="employeeList"></div>
+
+  <script>
+    // Step 1: JSON data (could also come from a server)
+    let jsonData = `
+    {
+      "employees": [
+        {"firstName": "Muskan", "lastName": "Syal"},
+        {"firstName": "Anisha", "lastName": "Rathor"},
+        {"firstName": "Upasana", "lastName": "Verma"},
+        {"firstName": "Sonu ", "lastName": "Kumar"},
+        {"firstName": "Bhanu", "lastName": "Priya"}
+      ]
+      
+    }`;
+    console.log(jsonData);
+    console.log(typeof jsonData);
+
+    // Step 2: Convert JSON string to JavaScript Object
+    let obj = JSON.parse(jsonData);
+console.log(obj);
+console.log(typeof obj);
+    // Step 3: Display data on webpage
+    let output = "";
+    obj.employees.forEach(emp => {
+      output += `
+        <div class="employee-card">
+          <h3>${emp.firstName} ${emp.lastName}</h3>
+        </div>`;
+    });
+
+    document.getElementById("employeeList").innerHTML = output;
+  </script>
+
+</body>
+</html>  -->
+
+<!-- 🔄 JSON Methods in JavaScript
+
+🧩 JSON.parse() – Convert JSON text ➡️ JavaScript Object
+
+let text = '{"name":"John", "age":30}';
+let obj = JSON.parse(text);
+console.log(obj.name); // Output: John
+
+🧩 JSON.stringify() – Convert JavaScript Object ➡️ JSON text
+
+let student = { name: "Alice", marks: 95 };
+let jsonText = JSON.stringify(student);
+console.log(jsonText);
+// Output: {"name":"Alice","marks":95} -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>📦 JSON.stringify Example</title>
+</head>
+<body>
+  <h2>📝 Convert JavaScript Object to JSON String</h2>
+
+  <button onclick="convertToJSON()">Convert Object to JSON</button>
+  <pre id="output">Click the button to see the JSON string...</pre>
+
+  <script>
+    function convertToJSON() {
+      // Step 1: Create a JavaScript object
+      const person = {
+        name: "John Doe",
+        age: 30,
+        email: "john@example.com",
+        hobbies: ["reading", "traveling", "coding"]
+      };
+      console.log(person);
+      console.log(typeof person);
+
+      // Step 2: Convert object into JSON string
+      const jsonString = JSON.stringify(person, null, 2); // null, 2 -> formats with indentation
+console.log(jsonString);
+console.log(typeof jsonString);
+      // Step 3: Display JSON string in HTML
+      document.getElementById("output").innerText = jsonString;
+    }
+  </script>
+</body>
+</html>

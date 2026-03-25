@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Combined DOM Events Demo</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; line-height: 1.6; }
+    .box { padding: 10px; border: 1px solid #ccc; margin-bottom: 15px; }
+    input, button, select { margin-top: 10px; padding: 5px; }
+  </style>
+</head>
+<!-- onload event occurs when an object has been loaded on the browser -->
+<body onload="alert('✅ Page loaded!')"> 
+  <h1>🧠 Combined JavaScript DOM Events</h1>
+
+  <!-- The event doesn’t fire while typing.
+       It fires only when you finish typing and click outside the input box. -->
+  <div class="box">
+    <h3>1. onchange</h3>
+    <input type="text" onchange="alert('Input changed!')" placeholder="Type & blur">
+  </div>
+
+
+<!-- onlick its an mouse events..........click hone per kuch ho... 
+ The onclick event occurs when a user clicks on an element (like a button, image, or paragraph).-->
+  <div class="box">
+    <h3>2. onclick</h3>
+    <button onclick="alert('Button clicked!')">Click Me</button>
+  </div>
+
+  <!-- ondblclick its an mouse events....doubleclick hone per kuch ho 
+   The ondblclick event occurs when the user double-clicks an element.-->
+  <div class="box">
+    <h3>3. ondblclick</h3>
+    <p ondblclick="alert('Double-clicked!')">Double-click this text</p>
+  </div>
+
+
+  <!--onmouseover its an mouse events. jab mouse ka cursor usper jaye toh event start  
+  The onmouseover event happens when the mouse pointer moves over an element. -->
+  <div class="box">
+    <h3> 4. onmouseover</h3>
+    <input type="text" onmouseover="alert(this.value)" placeholder="bring cursor">
+  </div>
+
+  <!-- onmouseout its an mouse events. jab mouse ka cursor bahar aye toh event chlega 
+   The onmouseout event occurs when the mouse pointer leaves the element area.-->
+ <div class="box">
+    <h3> 5. onmouseout</h3>
+    <input type="text" onmouseout="alert(this.value)" placeholder="press any key">
+  </div>
+
+<!-- onkeydown it is a keyboard Events  -->
+  <!-- jab bhi koi v key pree kroge toh woh scripting hogi..aur phir value print hogi 
+   Triggered when a key is pressed down on the keyboard (the moment you push it).-->
+  <div class="box">
+    <h3> 6. onkeydown</h3>
+    <input type="text" onkeydown="alert(this.value)" placeholder="press any key">
+  </div>
+
+  <!-- onkeyup jeh input ki value ko leta hai aur phir script run hoti hai 
+   Triggered when the user releases a key that was pressed.
+(After keydown and keypress) -->
+<div class="box">
+    <h3> 7. onkeyup</h3>
+    <input type="text" onkeyup="alert(this.value)" placeholder="press any key">
+  </div>
+
+  <!-- onkeypress same like keydown but jab backspace krte hai toh koi alert show ni hota per onkey down main hota hai
+   Triggered only when a printable character key is pressed (like letters or numbers).
+Note: It ignores special keys like Shift, Ctrl, Alt, etc.-->
+   <div class="box">
+    <h3> 8. onkeypress</h3>
+    <input type="text" onkeypress="alert(this.value)" placeholder="press any key">
+  </div>
+
+  <!-- oninput  Fires immediately as the user types or changes a value (real-time).-->
+  <div class="box">
+    <h3> 9. oninput</h3>
+    <input type="text" oninput="alert(this.value)" placeholder="press any key">
+  </div>
+
+  <!-- onchange triggers when the value of an input, select, or textarea changes and the user leaves the field (unfocuses it).
+Using e.target.value helps you get the current value from the event object. -->
+  <div class="box">
+    <h3>10. onchange with e.target.value</h3>
+    <input type="text" onchange="handleChange(event)" placeholder="Type and leave">
+    <p id="output">Changed value will appear here.</p>
+  </div>
+
+  <!-- onsubmit runs when a form is submitted (by clicking a submit button or pressing Enter).
+You can stop page reload using event.preventDefault(). -->
+  <div class="box">
+    <h3>11. onsubmit</h3>
+    <form onsubmit="return handleFormSubmit(event)">
+      <input type="text" placeholder="Your name" required>
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+
+  <!--onfocus → triggers when an input gets focus (user clicks inside it).
+onblur → triggers when an input loses focus (user clicks outside it).
+
+  When you click inside → background turns yellow.
+When you click out → background goes back to white. -->
+  <div class="box">
+    <h3>12. onfocus / onblur</h3>
+    <input type="text" onfocus="this.style.backgroundColor='lightyellow'" 
+    onblur="this.style.backgroundColor=''" placeholder="Focus me">
+  </div>
+
+  <!-- Triggered when the selected option in a dropdown (<select>) changes. -->
+  <div class="box">
+    <h3>13. onchange (select dropdown)</h3>
+    <select onchange="alert('Selected: ' + this.value)">
+      <option value="">Choose a fruit</option>
+      <option value="Apple">Apple</option>
+      <option value="Banana">Banana</option>
+    </select>
+  </div>
+
+  <!-- oncopy → fires when the user copies text (Ctrl + C).
+onpaste → fires when the user pastes text (Ctrl + V). -->
+    <div class="box">
+        <h3>14. oncopy / onpaste</h3>
+        <textarea oncopy="alert('Text copied!')" onpaste="alert('Text pasted!')" placeholder="Try copying/pasting here"></textarea>
+
+        <!-- Triggered whenever the user scrolls a page or an element.
+         Every time you scroll inside that div → logs message in console.
+(You can also use window.onscroll for full page scrolling.) -->
+  <div class="box">
+    <h3>15. onscroll</h3>
+    <div style="height:100px; overflow-y:scroll" onscroll="console.log('Scrolled!')">
+      <p>Scroll this box to trigger onscroll event.</p>
+      <p style="height:200px"></p>
+    </div>
+  </div>
+
+  <!-- Triggered when the browser window is resized. 
+   Whenever you change the browser size → it logs the new width.
+Useful for responsive design or layout adjustments. -->
+  <div class="box">
+    <h3>16. onresize</h3>
+    <p>Resize the browser and check console (F12).</p>
+  </div>
+
+  <!-- Triggered when a user right-clicks on an element (to open the context menu).
+You can prevent it with event.preventDefault().
+When you right-click on the box → default menu won’t appear; instead, you’ll see an alert. -->
+  <div class="box">
+    <h3>17. oncontextmenu</h3>
+    <p oncontextmenu="alert('Right-click blocked!'); return false;">Right-click on this text</p>
+  </div>
+
+  <script>
+    window.onresize = () => console.log('Window resized!');
+
+    function handleChange(e) {
+      document.getElementById("output").innerHTML = `You changed the input to: <strong>${e.target.value}</strong>`;
+    }
+
+    function handleFormSubmit(event) {
+      event.preventDefault();
+      alert("Form submitted!");
+      return false;
+    }
+  </script>
+</body>
+</html>
+
+<!-- 🧠 Summary Table
+Event	When It Fires	Common Use
+onchange	When dropdown value changes	Handle selections, update UI
+oncopy	When user copies text	Block copy, track user action
+onpaste	When user pastes text	Validate or restrict pasting
+onscroll	When user scrolls	Infinite scroll, lazy loading
+onresize	When window resizes	Responsive layout adjustment
+oncontextmenu	When user right-clicks	Disable right-click or custom menu -->

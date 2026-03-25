@@ -1,0 +1,20 @@
+<!-- 5. reduceRight()
+
+👉 Same as reduce, but works right → left.
+
+Real-Life Example: Joining words in reverse order. -->
+
+<!DOCTYPE html>
+<html>
+<body>
+<h2>reduceRight Example</h2>
+<p id="demo"></p>
+
+<script>
+const words = ["World", "My", "Hello"];
+let sentence = words.reduceRight((a, b) => a + " " + b);
+
+document.getElementById("demo").innerHTML = sentence;
+</script>
+</body>
+</html>

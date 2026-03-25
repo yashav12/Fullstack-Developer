@@ -1,0 +1,48 @@
+<!-- Storing JSON in Local Storage
+
+Local storage in the browser only stores text, not objects.
+
+So if you want to store user info (like a profile), you need to stringify it first. -->
+
+<!DOCTYPE html>
+<html>
+<body>
+  <h2>Storing and Viewing JSON Data using JSON.stringify()</h2>
+
+  <p><b>Message:</b> <span id="demo"></span></p>
+  <p><b>Raw JSON Stored in Local Storage:</b></p>
+  <pre id="storedData" style="background-color:#f3f3f3; padding:10px; border-radius:8px;"></pre>
+
+  <script>
+    // Step 1️⃣ Create an object
+    const user = { name: "John", age: 31, city: "New York" };
+    console.log(typeof user);
+    console.log(user);
+
+    // Step 2️⃣ Convert it into JSON string
+    const myJSON = JSON.stringify(user);
+    console.log(typeof myJSON);
+    console.log(myJSON);
+
+    // Step 3️⃣ Store it in browser local storage
+    localStorage.setItem("userData", myJSON);
+
+    // Step 4️⃣ Retrieve data from local storage
+    const text = localStorage.getItem("userData");
+    console.log(typeof text);
+    console.log(text);
+
+    // Step 5️⃣ Convert JSON string back into an object
+    const obj = JSON.parse(text);
+
+    // Step 6️⃣ Display message
+    document.getElementById("demo").innerHTML = 
+      `Welcome back, ${obj.name} from ${obj.city}!`;
+      console.log(typeof obj); // object
+      console.log(obj);
+
+    // Step 7️⃣ Also display the actual stored JSON text
+    document.getElementById("storedData").textContent = text;
+  </script>
+</body>
+</html>

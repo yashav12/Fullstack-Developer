@@ -1,0 +1,48 @@
+<!-- What is Promise? -->
+
+<!-- Promise is like a contract between you and javascript.
+
+A Promise can be in 3 states:
+
+Pending: still working
+
+Fullfilled: finished successfully (resolve called)
+
+Rejected: failed (reject called) -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Javascript Promises</title>
+</head>
+<body>
+    <h2>Javascript Promises</h2>
+    <p id="demo"></p>
+
+    <script>
+        function myDisplayer(some){
+            document.getElementById("demo").innerHTML=some;
+        }
+
+        //create a promise
+        let myPromise = new Promise(function (myResolve,myReject){
+            let x = 0;
+            if(x === 1){
+            myResolve("Order Delivered"); // success
+            }else{
+                myReject("Order Failed"); //Failed
+            }
+            console.log(myPromise)
+        });
+
+        //use the promise
+        myPromise.then(
+            function(value){ myDisplayer(value);}, //success case
+            function(error){ myDisplayer(error);},  //error case
+            console.log(myPromise)
+        );
+    </script>
+</body>
+</html>

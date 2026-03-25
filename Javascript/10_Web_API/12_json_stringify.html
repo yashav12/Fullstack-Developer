@@ -1,0 +1,29 @@
+<!-- 🧠 What is JSON.stringify()?
+
+Think of JSON.stringify() as a translator — it converts your JavaScript data (objects, arrays, etc.) into text (a string).
+
+Why do we do this?
+Because when we send data to a web server, it must be in text format (not objects). JSON helps us convert it.
+
+🎯 Simple Example — Converting an Object to JSON Text -->
+
+<!DOCTYPE html>
+<html>
+<body>
+  <h2>JSON.stringify() Example - Object</h2>
+  <p id="demo"></p>
+
+  <script>
+    // 🧍Imagine you have a person object
+    const person = {name: "John", age: 30, city: "New York"};
+console.log(typeof person);
+console.log(person);
+    // Convert it into JSON text
+    const myJSON = JSON.stringify(person);
+console.log(typeof myJSON);
+console.log(myJSON);
+    // Show result
+    document.getElementById("demo").innerHTML = myJSON;
+  </script>
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!-- Stringify a Number and Boolean -->
+ <!DOCTYPE html>
+<html>
+<body>
+  <h2>JSON.stringify() - Numbers and Booleans</h2>
+  <p id="demo"></p>
+
+  <script>
+    const num = 123e-5; // number
+    const bool = new Boolean(1); // boolean
+console.log(typeof bool);
+console.log(bool);
+console.log(typeof num);
+    const numJSON = JSON.stringify(num);
+    const boolJSON = JSON.stringify(bool);
+console.log(typeof numJSON);
+console.log(numJSON);
+console.log(typeof boolJSON); 
+console.log(boolJSON);  
+    document.getElementById("demo").innerHTML = 
+      `Number: ${numJSON}<br>Boolean: ${boolJSON}`;
+  </script>
+</body>
+</html>

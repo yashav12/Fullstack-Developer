@@ -1,0 +1,27 @@
+<!-- 9. Automatic toString() Conversion
+
+👉 Arrays automatically become strings when printed.
+Real Life Example: Showing fruits as a shopping list. 
+👉 Practical Example:
+
+Imagine writing your own name on a paper → you did it explicitly.
+
+Someone else writing your name automatically for you when asked → implicit.
+
+Both results are the same, but one is done by you, the other by the system.-->
+ 
+<!DOCTYPE html>
+<html>
+<body>
+<h2>toString Example</h2>
+<p id="demo"></p>
+
+<script>
+const fruits = ["Banana", "Orange", "Apple"];
+console.log(typeof (fruits))
+document.getElementById("demo").innerHTML = 
+"Using toString(): " + fruits.toString() + "<br>Auto: " + fruits;
+console.log(typeof (fruits.toString()))
+</script>
+</body>
+</html>

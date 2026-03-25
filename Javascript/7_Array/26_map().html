@@ -1,0 +1,31 @@
+<!-- 2. map()
+
+👉 Creates a new array after applying a function.
+
+Syntax:
+
+array.map(function(value, index, array) { return newValue })
+
+Parameters:
+- value: The current element being processed.
+- index (optional): The index of the current element.
+- array (optional): The array that map() is being applied to.
+- newValue: The value to be added to the new array.
+
+Real-Life Example: Doubling the marks of students for extra credit. -->
+
+<!DOCTYPE html>
+<html>
+<body>
+<h2>map Example</h2>
+<p id="demo"></p>
+
+<script>
+const marks = [50, 60, 70];
+const bonusMarks = marks.map(m => m + 10);
+console.log(marks);
+document.getElementById("demo").innerHTML =
+"Original: " + marks + "<br>With Bonus: " + bonusMarks;
+</script>
+</body>
+</html>

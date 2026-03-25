@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Unique Data Tracker</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<h2>Unique Data Tracker System</h2>
+
+<input type="text" id="email" placeholder="Enter User Email">
+<button onclick="addUser()">Add User</button>
+<button onclick="displayUsers()">Show Users</button>
+
+<div id="output"></div>
+
+<script>
+
+// ID Generator
+function* idGenerator(){
+let id = 1;
+
+while(true){
+yield "U" + String(id).padStart(3,"0");
+id++;
+}
+}
+
+let idGen = idGenerator();
+
+
+// Data Structures
+const userSet = new Set();
+const userMap = new Map();
+
+
+// Add User
+function addUser(){
+
+let email = document.getElementById("email").value;
+
+if(userSet.has(email)){
+document.getElementById("output").innerHTML +=
+`<p style="color:red">User already exists: ${email}</p>`;
+return;
+}
+
+let id = idGen.next().value;
+
+userSet.add(email);
+
+userMap.set(email,{
+id:id,
+score:0,
+level:1
+});
+
+document.getElementById("output").innerHTML +=
+`<p style="color:green">User Added → ${email} (ID: ${id})</p>`;
+}
+
+
+// Display Users
+function displayUsers(){
+
+let output = "<h3>All Users</h3>";
+
+userMap.forEach((data,email)=>{
+
+output += `
+<p>
+Email: ${email} |
+ID: ${data.id} |
+Score: ${data.score} |
+Level: ${data.level}
+</p>
+`;
+
+});
+
+document.getElementById("output").innerHTML = output;
+
+}
+
+</script>
+
+</body>
+</html>

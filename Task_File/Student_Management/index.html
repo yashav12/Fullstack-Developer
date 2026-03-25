@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Student Record Processing System</h1>
+    <div id="demo"></div>
+
+
+    <script>
+    const demoDiv= document.getElementById("demo");
+
+    function print(message){    //print ikk function
+        demoDiv.innerHTML += message + "\n";
+    }
+
+    const students = {
+        student1: {
+        name: "Alice",
+        marks: { maths: 85, science: 90, english: 78 }
+    },
+        student2: {
+        name: "Bob",
+        marks:{maths:75 , science:80 , english:88}
+    },
+        student3: {
+        name: "Charlie",
+        marks:{maths:95 , science:89 , english:92}
+    }
+}
+
+// Async function to process one student
+print(`Processing Student Names<br><br>`)
+
+function processStudent(student) {   //Ye ek function hai jo student object leta hai.
+    return new Promise((resolve) => {  //Function ek Promise return kar raha hai.
+        print(`Processing student :  ${student.name}<br>`);
+        setTimeout(() => {
+            const marks = student.marks;
+            let total = 0;
+            let count = 0;
+        for(let subject in marks){   //Ye loop har subject ke marks ko read karta hai.
+            total += marks[subject];
+            count++;
+}
+        const average =(total/count).toFixed(2);   //Average = 240 / 3 = 80.00   .toFixed(2) → 2 decimal places
+
+        resolve({     // resolve ka km je hai ki km ho gya hai result lelo
+             name:  student.name,
+             average: average
+        });
+        }, 3000);
+    });
+}
+// Async function to process all students
+        async function processAllStudents(){
+            const results = [];   //empty array bnye ki space ke lye
+
+        // for...in loop (students object)
+        for (let Key in students){    //Ye loop students object par chalega.
+            const result = await processStudent(students[Key]);  //Wait karo jab tak Promise resolve nahi hota
+            results.push(result);
+        }  
+        print("<br>FinalResults:<br><br>");
+
+        // for...of loop (results array)
+        for(let student of results){  //Ye array ke andar ke objects read karta hai.
+            print(`${student.name} has an average of   ${student.average}<br>`);
+        }
+        }
+
+        // Run function
+        processAllStudents();
+
+
+    </script>
+</body>
+</html>
+
+
+<!-- START
+  ↓
+HTML Page Load
+  ↓
+Get demoDiv from DOM
+(document.getElementById)
+  ↓
+print("Processing Student Names")
+  ↓
+Call processAllStudents()
+  ↓
+Create Empty Array → results[]
+  ↓
+FOR EACH student in students object (for...in)
+  ↓
+Call processStudent(student)
+  ↓
+Create Promise
+  ↓
+print("Processing student: Name")
+  ↓
+Wait 3 Seconds (setTimeout)
+  ↓
+Calculate Total Marks
+  ↓
+Calculate Subject Count
+  ↓
+Compute Average
+  ↓
+resolve({ name, average })
+  ↓
+await receives resolved data
+  ↓
+Push result into results[]
+  ↓
+Next Student?
+   ├── YES → Repeat Loop
+   └── NO
+  ↓
+print("Final Results")
+  ↓
+FOR EACH student in results[] (for...of)
+  ↓
+print("Name has average X")
+  ↓
+END -->

@@ -1,0 +1,21 @@
+<!-- 👉 Removes the first item from an array.
+
+Real-life Example:
+The first person in a queue leaves. -->
+<!DOCTYPE html>
+<html>
+<body>
+<h2>Array shift Example</h2>
+<p id="demo"></p>
+
+<script>
+const fruits = ["Banana", "Orange", "Apple", "Mango"];
+
+// Remove first fruit
+let fruit = fruits.shift([1]);
+
+document.getElementById("demo").innerHTML = 
+"Removed fruit: " + fruit + "<br>Remaining fruits: " + fruits;
+</script>
+</body>
+</html>

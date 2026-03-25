@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script>
+    function validateform(){
+        let email= document.getElementById("email").value;
+
+        //simple email check 
+        if(email === ""  || !email.inculde("@") || !email.inculde("gmail") || !email.inculde(".com")){
+            alert("Please enter a valid email");
+            return false;
+        }
+        return true;
+    }
+</script>
+<body>
+    <h2>email validation</h2>
+    <form onsubmit="validateForm()">
+        <label>email:</label>
+        <input type="text" id="email" placeholder="email eg.absd@gmail.com"><br>
+        <button type="submit">submit</button>
+    </form>
+</body>
+</html>

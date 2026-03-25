@@ -1,0 +1,20 @@
+<!-- 6. every()
+
+👉 Checks if all elements pass a test. Returns true/false.
+
+Real-Life Example: Are all students adults (18+)? -->
+
+<!DOCTYPE html>
+<html>
+<body>
+<h2>every Example</h2>
+<p id="demo"></p>
+
+<script>
+const ages = [18, 18, 25, 30];
+let allAdults = ages.every(a => a >= 18);
+
+document.getElementById("demo").innerHTML = "All adults? " + allAdults;
+</script>
+</body>
+</html>

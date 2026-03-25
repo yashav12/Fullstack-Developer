@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JavaScript Array Methods Playground</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 20px; }
+    h2 { color: darkblue; }
+    button { margin: 5px; padding: 8px 15px; cursor: pointer; border-radius: 5px; border: 1px solid #444; }
+    .result { margin: 10px 0; padding: 10px; border: 1px solid #ddd; background: #f9f9f9; border-radius: 5px; }
+  </style>
+</head>
+<body>
+
+  <h1>JavaScript Array Methods Playground</h1>
+  <p>Click the buttons to see how each method works with real-life examples.</p>
+
+  <!-- Delete -->
+  <h2>1. delete (⚠️ leaves holes)</h2>
+  <button onclick="deleteExample()">Run Delete Example</button>
+  <div id="deleteResult" class="result"></div>
+
+  <!-- Concat -->
+  <h2>2. concat() – Merge Arrays</h2>
+  <button onclick="concatExample()">Run Concat Example</button>
+  <div id="concatResult" class="result"></div>
+
+  <!-- copyWithin -->
+  <h2>3. copyWithin()</h2>
+  <button onclick="copyWithinExample()">Run CopyWithin Example</button>
+  <div id="copyWithinResult" class="result"></div>
+
+  <!-- flat -->
+  <h2>4. flat()</h2>
+  <button onclick="flatExample()">Run Flat Example</button>
+  <div id="flatResult" class="result"></div>
+
+  <!-- flatMap -->
+  <h2>5. flatMap()</h2>
+  <button onclick="flatMapExample()">Run FlatMap Example</button>
+  <div id="flatMapResult" class="result"></div>
+
+  <!-- splice -->
+  <h2>6. splice()</h2>
+  <button onclick="spliceExample()">Run Splice Example</button>
+  <div id="spliceResult" class="result"></div>
+
+  <!-- toSpliced -->
+  <h2>7. toSpliced()</h2>
+  <button onclick="toSplicedExample()">Run toSpliced Example</button>
+  <div id="toSplicedResult" class="result"></div>
+
+  <!-- slice -->
+  <h2>8. slice()</h2>
+  <button onclick="sliceExample()">Run Slice Example</button>
+  <div id="sliceResult" class="result"></div>
+
+  <!-- toString -->
+  <h2>9. toString()</h2>
+  <button onclick="toStringExample()">Run toString Example</button>
+  <div id="toStringResult" class="result"></div>
+
+
+  <script>
+    // 1. delete
+    function deleteExample() {
+      const students = ["John", "Sara", "Mike"];
+      delete students[1];
+      document.getElementById("deleteResult").innerHTML =
+        "Students: " + students + "<br>Seat 2 is now empty → " + students[1];
+    }
+
+    // 2. concat
+    function concatExample() {
+      const girls = ["Anita", "Lara"];
+      const boys = ["Ravi", "Aman"];
+      const team = girls.concat(boys);
+      document.getElementById("concatResult").innerHTML =
+        "Final Team: " + team;
+    }
+
+    // 3. copyWithin
+    function copyWithinExample() {
+      const books = ["Math", "Science", "History", "English"];
+      books.copyWithin(2, 0);
+      document.getElementById("copyWithinResult").innerHTML = books;
+    }
+
+    // 4. flat
+    function flatExample() {
+      const boxes = [[1,2],[3,4],[5,6]];
+      const flatBoxes = boxes.flat();
+      document.getElementById("flatResult").innerHTML = flatBoxes;
+    }
+
+    // 5. flatMap
+    function flatMapExample() {
+      const nums = [1, 2, 3];
+      const result = nums.flatMap(x => [x, x * 10]);
+      document.getElementById("flatMapResult").innerHTML = result;
+    }
+
+    // 6. splice
+    function spliceExample() {
+      const fruits = ["Apple", "Banana", "Mango"];
+      fruits.splice(1, 0, "Orange"); // Add Orange
+      let msg = "After Adding: " + fruits;
+      fruits.splice(2, 1); // Remove Mango
+      msg += "<br>After Removing: " + fruits;
+      document.getElementById("spliceResult").innerHTML = msg;
+    }
+
+    // 7. toSpliced
+    function toSplicedExample() {
+      const months = ["Jan", "Feb", "Mar", "Apr"];
+      const newMonths = months.toSpliced(1, 2);
+      document.getElementById("toSplicedResult").innerHTML =
+        "Original: " + months + "<br>New: " + newMonths;
+    }
+
+    // 8. slice
+    function sliceExample() {
+      const players = ["Rohit", "Virat", "Dhoni", "Sachin"];
+      const top2 = players.slice(0, 2);
+      document.getElementById("sliceResult").innerHTML =
+        "Top 2 Players: " + top2 + "<br>Original Team: " + players;
+    }
+
+    // 9. toString
+    function toStringExample() {
+      const fruits = ["Banana", "Orange", "Apple"];
+      document.getElementById("toStringResult").innerHTML =
+        "Using toString(): " + fruits.toString() + "<br>Auto Conversion: " + fruits;
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,56 @@
+[9:09 AM, 1/28/2026] Harjot Uni: <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>form validation</title>
+</head>
+    <script>
+        function validation(){
+            let name=document.getElementById("name").value;
+
+            if(name === ""){
+                alert("name cannot be empty!");
+                return false; //stops form submission
+            }
+            return true; //form will be submitted
+        }
+    </script>
+<body>
+<h2>simple validation</h2>
+<form onsubmit="validation()">
+    <label>name:</label>
+    <input type="text" id="name"><br><br>
+    <button type="submit">submit</button>
+</form>
+
+</body>
+</html>
+[9:09 AM, 1/28/2026] Harjot Uni: <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>form validation</title>
+</head>
+    <script>
+        function validation(){
+            let name=document.getElementById("name").value;
+
+            if(name === ""){
+                alert("name cannot be empty!");
+                return false; //stops form submission
+            }
+            return true; //form will be submitted
+        }
+    </script>
+<body>
+<h2>simple validation</h2>
+<form onsubmit="validation()">
+    <label>name:</label>
+    <input type="text" id="name"><br><br>
+    <button type="submit">submit</button>
+</form>
+
+</body>
+</html>

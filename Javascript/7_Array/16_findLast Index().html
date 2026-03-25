@@ -1,0 +1,46 @@
+<!-- 7. findLastIndex() (ES2023)
+
+👉 Finds the index of the last element that passes a test.
+
+Syntax
+
+array.findLastIndex(callback)
+
+callback → function with 3 arguments (value, index, array).
+
+Real-Life Example
+
+📍 You want to know the position of the last temperature above 40. -->
+
+<!DOCTYPE html>
+<html>
+<body>
+<h2>findLastIndex Example</h2>
+<p id="demo"></p>
+
+<script>
+const temp = [27, 28, 30, 40, 42, 35, 30];
+let pos = temp.findLastIndex(t => t > 40);
+
+document.getElementById("demo").innerHTML =
+"Last high temperature above 40 found at index: " + pos;
+</script>
+</body>
+</html>
+
+<!-- ✅ Summary (When to use what?)
+
+indexOf() → First position of an element. Flow it follows is LEFT to RIGHT.
+
+lastIndexOf() → Last position of an element. Flow it follows is RIGHT to LEFT.
+
+includes() → Check if it exists (true/false). Flow it follows is LEFT to RIGHT.
+
+find() → First value that matches condition. Flow it follows is LEFT to RIGHT.
+
+findIndex() → Index of first match. Flow it follows is LEFT to RIGHT.
+
+findLast() → Last value that matches condition. Flow it follows is RIGHT to LEFT.
+
+findLastIndex() → Index of last match. Flow it follows is RIGHT to LEFT.
+-->

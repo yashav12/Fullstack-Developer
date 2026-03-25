@@ -1,0 +1,92 @@
+<!-- 💾 2. Web Storage API — “Local & Session Storage”
+💡 What is Web Storage?
+
+Web Storage lets you store data inside the browser so that it remains available even after the page reloads.
+
+There are two types:
+
+| Type             | Lifetime                               | Example Use                             |
+| ---------------- | -------------------------------------- | --------------------------------------- |
+| `localStorage`   | Permanent until manually deleted       | Save dark mode, username, preferences   |
+| `sessionStorage` | Temporary (deleted when tab is closed) | Save quiz answers until user closes tab |
+
+🧠 Common Methods
+
+👇 Real-Life Example:
+
+When you visit a website and it remembers your theme (dark/light mode) or your username, it uses localStorage.
+
+✅ Example 1: Local Storage (Permanent) -->
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Local Storage Example</title>
+</head>
+<body>
+  <h2>💾 Local Storage Example</h2>
+  <input type="text" id="username" placeholder="Enter your name">
+  <button onclick="saveName()">Save Name</button>
+  <button onclick="showName()">Show Saved Name</button>
+  <p id="result"></p>
+
+  <script>
+    function saveName() {
+      const name = document.getElementById("username").value;
+      localStorage.setItem("username", name);
+      alert("Name saved successfully!");
+    }
+
+    function showName() {
+      const savedName = localStorage.getItem("username");
+      document.getElementById("result").innerHTML =
+        savedName ? `Welcome back, ${savedName}! 😃` : "No name found!";
+    }
+  </script>
+</body>
+</html>
+
+<!-- 🧩 What happens here?
+
+You type your name and click “Save Name.”
+
+Even if you close and reopen the browser, your name stays saved! -->
+
+<!-- ✅ Example 2: Session Storage (Temporary) -->
+
+ <!DOCTYPE html>
+<html>
+<head>
+  <title>Session Storage Example</title>
+</head>
+<body>
+  <h2>🕒 Session Storage Example</h2>
+  <input type="text" id="color" placeholder="Enter your favorite color">
+  <button onclick="saveColor()">Save Color</button>
+  <button onclick="showColor()">Show Saved Color</button>
+  <p id="result"></p>
+
+  <script>
+    function saveColor() {
+      const color = document.getElementById("color").value;
+      sessionStorage.setItem("favoriteColor", color);
+      alert("Color saved for this session!");
+    }
+
+    function showColor() {
+      const savedColor = sessionStorage.getItem("favoriteColor");
+      document.getElementById("result").innerHTML =
+        savedColor ? `Your favorite color is ${savedColor} 🎨` : "No color saved yet!";
+    }
+  </script>
+</body>
+</html> 
+
+<!-- 💡 Once you close the tab, the color disappears — because sessionStorage is temporary.
+
+📍Real-Life Use Case:
+
+localStorage: Save user preferences, login data, theme, etc.
+
+sessionStorage: Save temporary form data or shopping cart info during one visit. -->
+

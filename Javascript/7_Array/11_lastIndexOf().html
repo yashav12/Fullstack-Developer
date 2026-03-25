@@ -1,0 +1,30 @@
+<!-- 2. lastIndexOf()
+
+👉 Finds the last position of an element in an array.
+
+Syntax
+
+array.lastIndexOf(item, start)
+
+item → what you want to search.
+start → (optional) position to start searching backwards from.
+
+Real-Life Example
+
+📚 You want to know where the last "Apple" is in your shopping list. -->
+
+<!DOCTYPE html>
+<html>
+<body>
+<h2>lastIndexOf Example</h2>
+<p id="demo"></p>
+
+<script>
+const fruits = ["Apple", "Orange", "Apple", "Mango"];
+let position = fruits.lastIndexOf("Apple", 1);  // last "Apple" at index 2
+
+document.getElementById("demo").innerHTML =
+"Last 'Apple' found at position: " + position;
+</script>
+</body>
+</html>

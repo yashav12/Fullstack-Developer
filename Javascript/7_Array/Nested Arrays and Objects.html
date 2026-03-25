@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<body>
+<h2>Garage with Different Car Brands</h2>
+
+<div id="demo"></div>
+
+<script>
+const garage = {
+  owner: "John",
+  cars: [
+    {name:"Ford", models:["Fiesta", "Focus", "Mustang"]},
+    {name:"BMW", models:["320", "X3", "X5"]},
+    {name:"Fiat", models:["500", "Panda"]}
+  ]
+};
+
+let text = "<h3>Garage Owner: " + garage.owner + "</h3>";
+
+for (let i in garage.cars) {
+  text += "<h4>" + garage.cars[i].name + "</h4><ul>";
+  for (let j in garage.cars[i].models) {
+    text += "<li>" + garage.cars[i].models[j] + "</li>";
+  }
+  text += "</ul>";
+}
+
+document.getElementById("demo").innerHTML = text;
+</script>
+
+</body>
+</html>
+
+<!-- Summary (Real Life Analogy):
+
+Array = Parking lot
+
+Index = Slot number
+
+Element = Car in slot
+
+length = Total cars
+
+push() = Add new car at the end
+
+Loop = Check each car slot one by one -->

@@ -1,0 +1,29 @@
+<!-- 4. find()
+
+👉 Returns the first value that passes a test (condition).
+
+Syntax
+
+array.find(callback)
+
+callback → function with 3 arguments (value, index, array).
+
+Real-Life Example
+
+👨‍⚕️ You are checking patients’ ages and want to find the first person older than 18. -->
+
+<!DOCTYPE html>
+<html>
+<body>
+<h2>find Example</h2>
+<p id="demo"></p>
+
+<script>
+const ages = [12, 15, 22, 30, 40];
+let adult = ages.find(age => age > 18);
+
+document.getElementById("demo").innerHTML =
+"First adult age found: " + adult;
+</script>
+</body>
+</html>

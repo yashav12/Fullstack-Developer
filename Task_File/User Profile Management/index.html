@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>User Profile Management</title>
+    <style>
+        body {
+            font-family: Arial;
+            text-align: center;
+            padding: 20px;
+        }
+        input {
+            margin: 5px;
+            padding: 8px;
+        }
+        button {
+            margin: 5px;
+            padding: 8px 12px;
+            cursor: pointer;
+        }
+        #output {
+            margin-top: 20px;
+            border: 1px solid #ccc;
+            padding: 10px;
+            width: 60%;
+            margin-left: auto;
+            margin-right: auto;
+            text-align: left;
+        }
+    </style>
+</head>
+
+<body>
+
+<h2>User Profile Management System</h2>
+
+<input type="text" id="userId" placeholder="User ID">
+<input type="text" id="name" placeholder="Name">
+<input type="email" id="email" placeholder="Email">
+
+<br>
+
+<button onclick="viewUser()">View Profile (GET)</button>
+<button onclick="createUser()">Create Profile (POST)</button>
+<button onclick="updateUser()">Update Full (PUT)</button>
+<button onclick="patchUser()">Update One Field (PATCH)</button>
+<button onclick="deleteUser()">Delete (DELETE)</button>
+
+<div id="output"></div>
+
+<script>
+
+const API = "https://jsonplaceholder.typicode.com/users";
+
+// VIEW (GET)
+function viewUser() {
+    let id = document.getElementById("userId").value;
+
+    fetch(`${API}/${id}`)
+    .then(res => res.json())
+    .then(data => {
+        document.getElementById("output").innerHTML =
+            `<pre>${JSON.stringify(data, null, 2)}</pre>`;
+    })
+    .catch(err => console.log(err));
+}
+
+// CREATE (POST)
+function createUser() {
+    let name = document.getElementById("name").value;
+    let email = document.getElementById("email").value;
+
+    fetch(API, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ name, email })
+    })
+    .then(res => res.json())
+    .then(data => {
+        document.getElementById("output").innerHTML =
+            `<pre>Created:\n${JSON.stringify(data, null, 2)}</pre>`;
+    });
+}
+
+// UPDATE FULL (PUT)
+function updateUser() {
+    let id = document.getElementById("userId").value;
+    let name = document.getElementById("name").value;
+    let email = document.getElementById("email").value;
+
+    fetch(`${API}/${id}`, {
+        method: "PUT",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            id: id,
+            name: name,
+            email: email
+        })
+    })
+    .then(res => res.json())
+    .then(data => {
+        document.getElementById("output").innerHTML =
+            `<pre>Updated (Full):\n${JSON.stringify(data, null, 2)}</pre>`;
+    });
+}
+
+// UPDATE ONE FIELD (PATCH)
+function patchUser() {
+    let id = document.getElementById("userId").value;
+    let name = document.getElementById("name").value;
+
+    fetch(`${API}/${id}`, {
+        method: "PATCH",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            name: name
+        })
+    })
+    .then(res => res.json())
+    .then(data => {
+        document.getElementById("output").innerHTML =
+            `<pre>Updated (Partial):\n${JSON.stringify(data, null, 2)}</pre>`;
+    });
+}
+
+// DELETE
+function deleteUser() {
+    let id = document.getElementById("userId").value;
+
+    fetch(`${API}/${id}`, {
+        method: "DELETE"
+    })
+    .then(() => {
+        document.getElementById("output").innerHTML =
+            `<pre>User Deleted Successfully</pre>`;
+    });
+}
+
+</script>
+
+</body>
+</html>

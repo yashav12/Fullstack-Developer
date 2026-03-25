@@ -1,0 +1,29 @@
+<!-- 1. indexOf()
+
+👉 Finds the first position of an element in an array. If not found, returns -1.
+Syntax
+
+array.indexOf(item, start)
+
+item → what you want to search.
+
+start → (optional) position to start searching from.
+Real-Life Example
+
+📚 Imagine you have a shopping list and want to know where "Apple" appears first. -->
+
+<!DOCTYPE html>
+<html>
+<body>
+<h2>indexOf Example</h2>
+<p id="demo"></p>
+
+<script>
+const fruits = ["Apple", "Orange", "Apple", "Mango"];
+let index = fruits.indexOf("Apple", 0); // Start searching from index 0
+
+document.getElementById("demo").innerHTML =
+"First 'Apple' found at position: " + index;
+</script>
+</body>
+</html>

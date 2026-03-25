@@ -1,0 +1,31 @@
+<!-- 1. forEach()
+
+👉 Loops through each element and executes a function.
+
+Syntax:
+
+array.forEach(function(value, index, array) { ... })
+
+Parameters:
+- value: The current element being processed.   
+- index (optional): The index of the current element.   
+- array (optional): The array that forEach() is being applied to. -->
+
+<!DOCTYPE html>
+<html>
+<body>
+<h2>forEach Example</h2>
+<p id="demo"></p>
+
+<script>
+const students = ["Aman", "Riya", "Karan"];
+let msg = "";
+
+students.forEach(function(name, index) {
+  msg += "Hello " + name + " (Roll No: " + (index+1) + ")<br>";
+});
+
+document.getElementById("demo").innerHTML = msg;
+</script>
+</body>
+</html>

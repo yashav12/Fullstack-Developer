@@ -1,0 +1,23 @@
+<!-- 3. toSorted() – Safe Sorting (ES2023)
+
+👉 Works like sort(), but does not change original array.
+📌 Real Life Example: Keeping original product list safe while sorting a copy.
+
+Syntax:
+
+array.toSorted() -->
+<!DOCTYPE html>
+<html>
+<body>
+<h2>toSorted() Example</h2>
+<p id="demo"></p>
+
+<script>
+const months = ["Jan", "Mar", "Feb", "Apr"];
+const sortedMonths = months.toSorted();
+
+document.getElementById("demo").innerHTML =
+"Original: " + months + "<br>Sorted Copy: " + sortedMonths;
+</script>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!--  What is a Callback? -->
+
+<!-- A callback is just a function that you pass into another function 
+
+The main function then calls it later when its own work is done
+
+Example:
+
+You order pizza (main function)
+
+you give your phone number (callback function)
+
+when the pizza is ready, the shop calls you back.
+
+Why Callback?
+
+Without Callbacks: Functions run immediately one after the other. -->
+
+<!-- With Callbacks: You can control when and how another function runs. -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CallBack</title>
+</head>
+<body>
+    <script>
+        function sayhello(callback){
+            console.log("hello");
+            callback();
+        }
+        function saygoodbye(){
+            console.log("goodbye");
+        }
+        sayhello( saygoodbye);
+       
+
+    // example 2
+    function add(a,b,callback){ // instead callback we can write any thing
+        console.log(a+b);
+        callback(a,b);
+    }
+    function subtract(a,b){
+        console.log(a-b);
+    }
+    add(2,3,subtract)
+    </script>
+</body>
+</html>
+

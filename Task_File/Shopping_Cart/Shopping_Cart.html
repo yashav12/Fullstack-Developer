@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping cart</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div style="display:flex; justify-content:space-between;padding:20px;color:white;background-color:rgb(65, 65, 65)">
+        <h1 style="font-size:35px;margin-left:30px;">🛒 Shopping Cart</h1>
+    <div class="search-box">
+        <span class="icon">🔍</span>   
+        <input type="text" id="search" placeholder=" Search products..." oninput="searchProducts()">
+         <!--User jaise hi koi letter type ya delete karta hai oninput event turant function call karta hai  -->
+    </div></div>
+   
+    <div class="product">
+        <h1>Products</h1>
+         <div id="productList"></div>
+    </div>
+   
+    <div class="prdt">
+        <div style="background:#96a5b3;padding:30px;">
+        <div class="items" data-name="earbud">
+        <img class="img" src="earbd.jpg">
+        <h2>EarBud</h2>
+        <h3>Price: $800</h3>
+          <button style="background-color:black;color:white;" onclick="addToCart('EarBud', 800 ,'earbd.jpg')">Add to Cart</button>
+        </div> </div>
+
+         <div style="background:#96a5b3;padding:30px;">
+         <div class="items" data-name="headphone">
+        <img class="img" src="hp.jpg">
+        <h2>HeadPhone</h2>
+        <h3>Price: $500</h3>
+         <button style="background-color:black;color:white;" onclick="addToCart('HeadPhone', 500, 'hp.jpg')">Add to Cart</button>
+        </div></div>
+
+        <div style="background:#96a5b3;padding:30px;">
+         <div class="items" data-name="laptop">
+        <img class="img" src="lptp.jpg">
+        <h2>Laptop</h2>
+        <h3>Price: $20,000</h3>
+         <button style="background-color:black;color:white;" onclick="addToCart('Laptop', 20000 , 'lptp.jpg')">Add to Cart</button>
+        </div></div>
+
+        <div style="background:#96a5b3;padding:30px;">
+        <div class="items" data-name="android">
+        <img class="img" src="ph.jpg">
+        <h2>Android</h2>
+        <h3>Price: $10,000</h3>
+        <button style="background-color:black;color:white;" onclick="addToCart('Android', 10000 , 'ph.jpg')">Add to Cart</button>
+        </div>
+    </div></div>
+
+        <div class="prdt-1">
+         <div style="background:#96a5b3;padding:30px;">
+         <div class="items" data-name="iphone">
+        <img class="img" src="iph.jpg">
+        <h2>IPhone</h2>
+        <h3>Price: $30,000</h3>
+         <button style="background-color:black;color:white;"onclick="addToCart('IPhone', 30000 , 'iph.jpg')">Add to Cart</button>
+        </div></div>
+
+        <div style="background:#96a5b3;padding:30px;">
+         <div class="items" data-name="ipad">
+        <img class="img" src="ipd.jpg">
+        <h2>IPad</h2>
+        <h3>Price: $10,000</h3>
+         <button style="background-color:black;color:white;" onclick="addToCart('IPad', 10000 , 'ipd.jpg')">Add to Cart</button>
+        </div></div>
+
+        <div style="background:#96a5b3;padding:30px;">
+         <div class="items" data-name="mouse">
+        <img class="img" src="mse.jpg">
+        <h2>Mouse</h2>
+        <h3>Price: $500</h3>
+         <button style="background-color:black;color:white;" onclick="addToCart('Mouse', 500 , 'mse.jpg')">Add to Cart</button>
+        </div></div>
+
+        <div style="background:#96a5b3;padding:30px;">
+         <div class="items" data-name="macbook">
+        <img class="img" src="mbook.jpg">
+        <h2>MacBook</h2>
+        <h3>Price: $50,000</h3>
+         <button style="background-color:black;color:white;" onclick="addToCart('MacBook', 50000 , 'mbook.jpg')">Add to Cart</button>
+        </div></div>
+    </div>
+   
+     <div class="cart">
+    <h1 style="font-size:40px;text-align:center;">Cart</h1>
+    <div id="cartItems"></div>
+    <div class="total" id="cartTotal"></div>
+  </div>
+
+ <script>
+    let cart = [];
+    let total = 0;
+
+// SearchProduct Function   313030
+    function searchProducts() {   //input → user ne search box mein kya likha
+        let input = document.getElementById("search").value.toLowerCase(); //toLowerCase() → capital/small letter ka issue khatam
+        let items = document.querySelectorAll(".items"); //items → saare products (EarBud, Laptop, etc.)
+
+        items.forEach(item => {  //Har product ka naam <h2> se nikal rahe hain
+            let name = item.querySelector("h2").innerText.toLowerCase();
+
+            if (name.includes(input)) { //Agar product ka naam search text se match kare toh vo show ho nhii te hide krde mtlb kush v na show ho
+                item.style.display = "block";
+            } else {
+                item.style.display = "none";
+            }
+        });
+    }
+
+// AddToCart Function
+    function addToCart(name, price , img) {
+        
+        const existingItem = cart.find(item => item.name === name);
+        if (existingItem) {
+             existingItem.quantity++; // increase quantity
+        } else {
+        cart.push({ name, price, img, quantity: 1 }); // add new
+    }
+       // calculateTotal();
+        displayCart();
+    }
+
+//Increase Quantity Function    
+        function increaseQty(name) {
+            const item = cart.find(item => item.name === name);
+        if (item) {
+            item.quantity++;
+            displayCart();
+    }
+}
+
+//Decrease quantity function
+        function decreaseQty(name) {
+            const item = cart.find(item => item.name === name);
+
+        if (item) {
+        if (item.quantity > 1) {
+            item.quantity--;
+        } else {
+            // quantity 1 se kam hui → item remove
+            cart = cart.filter(i => i.name !== name);
+        }
+        displayCart();
+    }
+}
+
+
+// Remove from Cart Function
+    function removeFromCart(name) {
+    // Remove item from cart
+    cart = cart.filter(item => item.name !== name);
+    
+    //calculateTotal();
+    displayCart();
+}
+
+// Calculate total Price
+function calculateTotal() {
+    total = cart.reduce((acc, item) => acc + (item.price * item.quantity), 0);
+}
+
+// DisplayCart Function with quantity and remove button
+    function displayCart() {
+        const cartItems = document.getElementById("cartItems"); //Ye HTML se  div ke elements utha kar JavaScript mein store kar rahi hain.
+        const cartTotal = document.getElementById("cartTotal");
+
+        cartItems.innerHTML = ""; //clear previous eg earbud, laptop
+        let total = 0;
+
+        cart.forEach((item) => {
+               total += item.price * item.quantity;
+
+            cartItems.innerHTML += `
+                <div style=" display:flex;justify-content:center;gap:20px;text-align:center;padding:10px; color:white;border-radius:8px; align-items:center; ">
+                  <img src="${item.img}" style="width:200px;height:200px;"><br>
+                    <div>
+                    <h1>${item.name}</h1>
+                    <h2>$${item.price}</h2>
+                   <button onclick="decreaseQty('${item.name}')">−</button>
+                        <span style="font-size:18px;">${item.quantity}</span>
+                        <button onclick="increaseQty('${item.name}')">+</button>
+                        <p>Subtotal: $${item.price * item.quantity}</p>
+                    <button onclick="removeFromCart('${item.name}')">Remove</button>
+                </div>
+                </div>
+            
+            `;
+            });
+        cartTotal.innerHTML = ` <h2 style="color:white;text-align:center;">Total: $${total}</h2>
+        `; 
+    }
+</script>
+
+   
+</body>
+</html>

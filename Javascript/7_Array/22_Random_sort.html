@@ -1,0 +1,22 @@
+<!-- 6. Random Sort
+
+👉 Shuffle elements randomly.
+📌 Real Life Example: Randomizing quiz questions.
+
+Code: -->
+
+<!DOCTYPE html>
+<html>
+<body>
+<h2>Random Sort Example</h2>
+<p id="demo"></p>
+
+<script>
+const questions = [1, 2, 3, 4, 5, 6];
+questions.sort(() => 0.5 - Math.random());
+
+document.getElementById("demo").innerHTML =
+"Shuffled Questions: " + questions;
+</script>
+</body>
+</html>

@@ -1,0 +1,23 @@
+<!-- 7. Finding Min & Max
+
+👉 No direct method → use tricks.
+
+Using Math.min & Math.max: -->
+
+<!DOCTYPE html>
+<html>
+<body>
+<h2>Find Min & Max Example</h2>
+<p id="demo"></p>
+
+<script>
+const numbers = [40, 100, 1, 5, 25, 10];
+
+const minVal = Math.min.apply(null, numbers);
+const maxVal = Math.max.apply(null, numbers);
+
+document.getElementById("demo").innerHTML =
+"Min: " + minVal + "<br>Max: " + maxVal;
+</script>
+</body>
+</html>

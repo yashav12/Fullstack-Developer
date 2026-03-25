@@ -1,0 +1,37 @@
+<!-- async aur await Promises ko easy way me handle karne ke liye use hote hain.
+Ye dono milke asynchronous code ko synchronous jaisa bana dete hain (matlab step by step flow me).
+
+1️⃣ async ka kaam:
+async lagane se function hamesha Promise return karta hai —
+even agar wo normal value hi return kare.
+
+2️⃣ await ka kaam:
+await Promise ke result ka wait karta hai, aur tab tak function ko pause kar deta hai —
+jab tak wo Promise resolve ya reject nahi ho jaata.
+🧩 await sirf async function ke andar hi use ho sakta hai.-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Await Function</h2>
+    <p id="demo"></p>
+    <script>
+        async function makePizza(){
+            document.getElementById("demo").innerHTML="🍽️ Order placed... preparing pizza!";
+            
+            let result= await new Promise((resolved => {
+                setTimeout(()=> resolved("🔥 Pizza is ready!"),2000);
+            }));
+
+            document.getElementById("demo").innerHTML=result + " 😋";
+        }
+
+        makePizza();
+    </script>
+</body>
+</html>

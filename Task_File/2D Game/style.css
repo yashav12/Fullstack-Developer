@@ -1,0 +1,15 @@
+body{
+    margin:0;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+}
+
+#board{
+    background-image:url('images/bg.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    width:50%;
+    height:100%;
+}

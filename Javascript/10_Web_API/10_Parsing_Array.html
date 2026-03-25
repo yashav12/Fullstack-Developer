@@ -1,0 +1,32 @@
+<!-- Parsing a JSON Array
+
+If the server sends a list (like car brands, users, or products), the JSON looks like an array.
+
+Example:
+'["Ford", "BMW", "Audi", "Fiat"]'
+This is a JSON array of strings. -->
+
+<!DOCTYPE html>
+<html>
+<body>
+  <h2>🚗 JSON.parse() - Array Example</h2>
+  <p id="demo"></p>
+
+  <script>
+    // JSON text representing an array
+    const text = '["Ford", "BMW", "Audi", "Fiat"]';
+console.log(typeof text);
+console.log(text);
+    // Convert text into a JS array
+    const cars = JSON.parse(text);
+
+    document.getElementById("demo").innerHTML =
+      `My favorite car brand is: ${cars[2]} 🚘`;
+      console.log(typeof cars); // object (arrays are a type of object in JS)
+      console.log(cars); // ["Ford", "BMW", "Audi", "Fiat
+  </script>
+</body>
+</html>
+
+<!-- 🧩 Result:
+It converts JSON text into a real JavaScript array, so you can access values like cars[0]. -->

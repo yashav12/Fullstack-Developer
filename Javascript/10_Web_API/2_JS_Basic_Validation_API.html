@@ -1,0 +1,51 @@
+<!-- ✅ JavaScript Validation API (Browser Form API)
+
+Forms are everywhere — login, signup, payment, etc.
+The Validation API helps the browser automatically check if the data entered is correct before submission.
+
+🧩 Example 3: Basic Input Validation
+
+👉 Scenario:
+You’re creating a form that only accepts a number between 100 and 300.
+If the number is outside this range, show a warning ⚠️.
+
+✅ Code Example -->
+
+<!DOCTYPE html>
+<html>
+<body>
+  <h2>🧾 Form Validation Example</h2>
+
+  <label>Enter a number (100 - 300):</label><br>
+  <input id="id1" type="number" min="100" max="300" required>
+  <button onclick="checkNumber()">Check</button>
+
+  <p id="demo"></p>
+
+  <script>
+    function checkNumber() {
+      const input = document.getElementById("id1");
+      if (!input.checkValidity()) {
+        document.getElementById("demo").innerHTML = "❌ " + input.validationMessage;
+      } else {
+        document.getElementById("demo").innerHTML = "✅ Input is valid!";
+      }
+    }
+  </script>
+</body>
+</html>
+
+<!-- ⚖️ Validity Properties (Extra Checks)
+
+The browser stores extra info inside the .validity object.
+
+| Property          | Meaning                                                    |
+| ----------------- | ---------------------------------------------------------- |
+| `rangeOverflow`   | Value is **too large**                                     |
+| `rangeUnderflow`  | Value is **too small**                                     |
+| `typeMismatch`    | Value doesn’t match the type (like text in an email field) |
+| `valueMissing`    | Required field is empty                                    |
+| `patternMismatch` | Doesn’t match a given pattern                              |
+| `valid`           | True if all rules are okay ✅                               |
+| `invalid`         | True if any rule is broken ❌   
+| -->

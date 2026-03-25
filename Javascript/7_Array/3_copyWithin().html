@@ -1,0 +1,21 @@
+<!-- 3. copyWithin() – Copy Inside Same Array
+
+👉 Copies part of an array into another place in the same array.
+Real Life Example: Copying books to another shelf space, overwriting old ones. -->
+<!DOCTYPE html>
+<html>
+<body>
+<h2>CopyWithin Example</h2>
+<p id="demo"></p>
+
+<script>
+const books = ["Math", "Science", "History", "English"];
+books.copyWithin(3,1  ); 
+
+ 
+//["Math", "Science", "History", "Math"]
+document.getElementById("demo").innerHTML = books;
+</script>
+</body>
+</html>
+

@@ -1,0 +1,28 @@
+<!-- What is async?
+
+If you put async before a function ,it always gives you a Promise.
+Automatically create a promises.
+ -->
+
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Async</title>
+ </head>
+ <body>
+    <h2> Async Example</h2>
+    <p id="demo"></p>
+
+    <script>
+        async function sayHello(){
+            return "hello world";
+        }
+        console.log(sayHello()) // to check promise state
+        sayHello().then(function(value){
+            document.getElementById("demo").innerHTML= value;
+        });
+    </script>
+ </body>
+ </html>

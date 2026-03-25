@@ -1,0 +1,29 @@
+<!-- 6. findLast() (ES2023)
+
+👉 Finds the last value that passes a test.
+
+Syntax
+
+array.findLast(callback)
+
+callback → function with 3 arguments (value, index, array).
+
+Real-Life Example
+
+🌡️ You are checking temperatures and want to find the last temperature above 40. -->
+
+<!DOCTYPE html>
+<html>
+<body>
+<h2>findLast Example</h2>
+<p id="demo"></p>
+
+<script>
+const temp = [27, 28, 46,30, 40, 42, 35, 30,45];
+let high = temp.findLast(t => t > 40);
+
+document.getElementById("demo").innerHTML =
+"Last high temperature above 40: " + high;
+</script>
+</body>
+</html>

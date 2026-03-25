@@ -1,0 +1,55 @@
+<!-- 🧩 Example 4: rangeOverflow (Value Too Large)-->
+
+<!DOCTYPE html>
+<html>
+<body>
+  <h2>🔢 Range Overflow Example</h2>
+
+  <input id="id1" type="number" max="100">
+  <button onclick="checkValue()">Check</button>
+  <p id="demo"></p>
+
+  <script>
+    function checkValue() {
+      const input = document.getElementById("id1");
+      let text = "✅ Value OK";
+      if (input.validity.rangeOverflow) {
+        text = "⚠️ Value too large (should be ≤ 100)";
+      }
+      document.getElementById("demo").innerHTML = text;
+    }
+  </script>
+</body>
+</html> 
+
+
+<!-- 🧩 Example 5: rangeUnderflow (Value Too Small) -->
+
+<!-- <!DOCTYPE html>
+<html>
+<body>
+  <h2>🔢 Range Underflow Example</h2>
+
+  <input id="id1" type="number" min="100">
+  <button onclick="checkValue()">Check</button>
+  <p id="demo"></p>
+
+  <script>
+    function checkValue() {
+      const input = document.getElementById("id1");
+      let text = "✅ Value OK";
+      if (input.validity.rangeUnderflow) {
+        text = "⚠️ Value too small (should be ≥ 100)";
+      }
+      document.getElementById("demo").innerHTML = text;
+    }
+  </script>
+</body>
+</html> -->
+
+    <!-- | Concept             | Example                 | Real-Life Analogy                                 |
+    | ------------------- | ----------------------- | ------------------------------------------------- |
+    | **Browser API**     | Geolocation, Validation | Built-in tools like phone GPS or camera           |
+    | **Third-Party API** | YouTube, Twitter        | Asking another company’s service                  |
+    | **Validation API**  | Form input checks       | Security guard checking if form entries are valid | -->
+ 

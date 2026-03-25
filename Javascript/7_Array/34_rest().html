@@ -1,0 +1,19 @@
+<!-- 13. Rest Operator (...)
+
+👉 Collects leftover values. -->
+
+<!DOCTYPE html>
+<html>
+<body>
+<h2>Rest Example</h2>
+<p id="demo"></p>
+
+<script>
+const arr = [1,2,3,4,5];
+const [a, ...rest] = arr;
+
+document.getElementById("demo").innerHTML = 
+"First: " + a + "<br>Rest: " + rest;
+</script>
+</body>
+</html>

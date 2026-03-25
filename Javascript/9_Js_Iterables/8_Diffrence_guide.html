@@ -1,0 +1,327 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Generators vs Events — Learning Demo</title>
+<style>
+  :root{
+    --bg:#f6f8fb; --card:#fff; --muted:#555; --accent:#2563eb; --accent2:#0ea5b1;
+    --radius:12px; --shadow: 0 8px 24px rgba(16,24,40,0.06);
+    font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    color: #0f172a;
+  }
+  *{box-sizing:border-box}
+  body{margin:0; background:var(--bg); color:var(--muted); line-height:1.5}
+  .wrap{max-width:1100px; margin:28px auto; padding:20px;}
+  header{display:flex; align-items:center; justify-content:space-between; gap:16px}
+  .logo{display:flex; gap:12px; align-items:center}
+  .logo-box{width:44px;height:44px;border-radius:10px;background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700}
+  h1{margin:6px 0 0;font-size:20px;color:#07103a}
+  p.lead{color:#374151;margin:10px 0 18px}
+
+  .grid{display:grid; grid-template-columns: 1fr 380px; gap:20px; align-items:start}
+  @media (max-width:980px){ .grid{grid-template-columns:1fr} }
+
+  /* left column content */
+  .card{background:var(--card); border-radius:var(--radius); padding:18px; box-shadow:var(--shadow); margin-bottom:18px}
+  h2{margin:0 0 8px; color:#07103a}
+  .muted{color:#6b7280}
+  .code{background:#0b1220;color:#f8fafc;padding:12px;border-radius:8px;font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, monospace;font-size:13px;overflow:auto}
+  table.compare{width:100%; border-collapse:collapse; margin-top:10px}
+  table.compare td, table.compare th{border:1px solid #eef2f7;padding:8px;text-align:left;font-size:14px}
+  table.compare th{background:#f8fafc;color:#0b1220}
+
+  /* right column demos */
+  .demo {background:linear-gradient(180deg,#fff,#fbfdff); padding:14px; border-radius:12px; box-shadow:var(--shadow); margin-bottom:18px}
+  .demo h3{margin:6px 0 10px}
+  .controls{display:flex;gap:8px;flex-wrap:wrap}
+  .btn{background:var(--accent); color:#fff; border:0; padding:10px 12px; border-radius:8px; cursor:pointer}
+  .btn.secondary{background:#fff;color:var(--accent);border:1px solid rgba(37,99,235,0.12)}
+  pre.out{background:#0b1220;color:#e6eef8;padding:10px;border-radius:8px;min-height:40px;white-space:pre-wrap}
+
+  footer{margin-top:20px;color:#6b7280;font-size:13px;text-align:center}
+  .kbd{display:inline-block;background:#111827;color:#fff;padding:2px 8px;border-radius:6px;font-size:12px;margin-left:6px}
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="logo">
+        <div class="logo-box">GvE</div>
+        <div>
+          <h1>Generators vs Events — interactive guide</h1>
+          <div class="muted">Simple explanations, analogies, pros/cons + live demos</div>
+        </div>
+      </div>
+      <div class="muted">Try it: click the demo buttons →</div>
+    </header>
+
+    <div class="grid">
+      <!-- LEFT: explanations -->
+      <main>
+        <section class="card">
+          <h2>What is a Generator? </h2>
+          <p>
+            A <strong>Generator</strong> is a function that can <em>pause</em> and <em>resume</em> its execution.
+            It uses <code>function*</code> and <code>yield</code> to return values one-by-one. You control it via <code>next()</code>.
+          </p>
+
+          <h3>Real-life analogy</h3>
+          <p>Think of a recipe where you do one step at a time: <em>chop → cook → serve</em>. You pause after each step and call the next step when ready.</p>
+
+          <h3>Key generator words</h3>
+          <ul>
+            <li><strong>yield</strong> — pause and return a value</li>
+            <li><strong>next()</strong> — resume and get the next value</li>
+            <li><strong>return()</strong> — stop early and return a final value</li>
+            <li><strong>throw()</strong> — throw an error inside the generator</li>
+          </ul>
+        </section>
+
+        <section class="card">
+          <h2>What are Events? </h2>
+          <p>
+            <strong>Events</strong> are messages that something happened — a button click, a network reply, or a timer tick.
+            You <em>listen</em> for events (with <code>addEventListener</code>) and run a callback whenever the event occurs.
+          </p>
+
+          <h3>Real-life analogy</h3>
+          <p>Events are like doorbells — when someone rings, your program responds immediately. You don't pause — you react.</p>
+
+          <h3>Event traits</h3>
+          <ul>
+            <li>React to user actions or external signals</li>
+            <li>Multiple listeners can respond independently</li>
+            <li>No built-in pause/resume of an internal function state</li>
+          </ul>
+        </section>
+
+        <section class="card">
+          <h2>When to use which? </h2>
+          <p><strong>Use Generators</strong> when you need controlled, sequential steps (e.g., paged data, step-by-step workflows, lazy streams).</p>
+          <p><strong>Use Events</strong> when you must respond to user input, timers, or external notifications (e.g., UI clicks, socket messages).</p>
+
+          <h3>Comparison table</h3>
+          <table class="compare">
+            <thead><tr><th>Feature</th><th>Generator</th><th>Event</th></tr></thead>
+            <tbody>
+              <tr><td>Primary concept</td><td>Pause & resume a function</td><td>React to something happening</td></tr>
+              <tr><td>State preserved</td><td>Yes (internal state)</td><td>No (unless you store it)</td></tr>
+              <tr><td>Use case</td><td>Step workflows, lazy streams</td><td>UI actions, notifications, timers</td></tr>
+              <tr><td>Control</td><td>Caller controls steps (<code>next()</code>)</td><td>External triggers control flow</td></tr>
+              <tr><td>Complexity</td><td>Moderate (stateful logic)</td><td>Simple to set up; may need coordination</td></tr>
+            </tbody>
+          </table>
+        </section>
+
+        <section class="card">
+          <h2>Pros & Cons </h2>
+          <div>
+            <strong>Generators — Pros:</strong>
+            <ul>
+              <li>Memory efficient (yield on demand)</li>
+              <li>Easy step-by-step control</li>
+              <li>Useful for custom iterators and streams</li>
+            </ul>
+            <strong>Generators — Cons:</strong>
+            <ul>
+              <li>Can be harder to read for beginners</li>
+              <li>Stateful and not reusable once finished</li>
+            </ul>
+            <strong>Events — Pros:</strong>
+            <ul>
+              <li>Great for UI and real-time updates</li>
+              <li>Decouples producer and consumer</li>
+            </ul>
+            <strong>Events — Cons:</strong>
+            <ul>
+              <li>No built-in pause/resume (you must manage state)</li>
+              <li>Can lead to messy callback chains if not organized</li>
+            </ul>
+          </div>
+        </section>
+
+        <section class="card">
+          <h2>Combination pattern</h2>
+          <p>Generators and events can be combined. For example, user clicks (events) can call <code>generator.next()</code> to advance a step-by-step workflow — this gives the best of both worlds.</p>
+        </section>
+      </main>
+
+      <!-- RIGHT: interactive demos -->
+      <aside>
+        <!-- Generator demo -->
+        <div class="demo">
+          <h3>Generator demo — Step workflow</h3>
+          <p class="muted">A generator yields steps. Use the controls to resume, stop, or throw an error.</p>
+
+          <div style="margin:10px 0" class="code">
+<pre>// generator function (recipe)
+function* recipe() {
+  yield "1) Wash fruits 🧼";
+  yield "2) Cut fruits 🔪";
+  yield "3) Mix fruits 🥣";
+  yield "4) Serve 🍽️";
+  return "All done ✅";
+}</pre>
+          </div>
+
+          <div class="controls" style="margin-bottom:8px">
+            <button class="btn" id="g-next">Next</button>
+            <button class="btn secondary" id="g-stop">Stop</button>
+            <button class="btn secondary" id="g-throw">Throw Error</button>
+            <button class="btn secondary" id="g-reset">Reset</button>
+          </div>
+
+          <div>
+            <strong>Output:</strong>
+            <pre class="out" id="g-out">Ready — press Next</pre>
+          </div>
+        </div>
+
+        <!-- Event demo -->
+        <div class="demo">
+          <h3>Event demo — Independent reactions</h3>
+          <p class="muted">Buttons fire events. Actions are independent and can happen in any order.</p>
+
+          <div class="controls" style="margin-bottom:8px">
+            <button class="btn" id="e-alert">Alert</button>
+            <button class="btn" id="e-log">Log</button>
+            <button class="btn" id="e-timer">Start Timer</button>
+            <button class="btn" id="e-stop-timer">Stop Timer</button>
+          </div>
+
+          <div>
+            <strong>Console output:</strong>
+            <pre class="out" id="e-out">No events yet</pre>
+          </div>
+        </div>
+
+        <!-- Combined demo -->
+        <div class="demo">
+          <h3>Combined demo — Events driving generator</h3>
+          <p class="muted">Click "Advance" (an event) to call <code>gen.next()</code> and advance the generator.</p>
+
+          <div class="controls" style="margin-bottom:8px">
+            <button class="btn" id="c-advance">Advance</button>
+            <button class="btn secondary" id="c-reset">Reset</button>
+          </div>
+
+          <div>
+            <strong>Combined output:</strong>
+            <pre class="out" id="c-out">Click Advance to start</pre>
+          </div>
+        </div>
+      </aside>
+    </div>
+
+    <footer>
+      <div>Made for learning • Try changing code in your console • <span class="kbd">generators & events</span></div>
+    </footer>
+  </div>
+
+<script>
+/* ----------------------------
+   Generator Demo Implementation
+   ---------------------------- */
+function* recipe() {
+  yield "1) Wash fruits 🧼";
+  yield "2) Cut fruits 🔪";
+  yield "3) Mix fruits 🥣";
+  yield "4) Serve 🍽️";
+  return "All done ✅";
+}
+
+let gen = recipe();
+const gOut = document.getElementById('g-out');
+
+document.getElementById('g-next').addEventListener('click', () => {
+  const res = gen.next();
+  if (res.done) {
+    gOut.textContent = res.value ? res.value : 'Done';
+  } else {
+    gOut.textContent = res.value;
+  }
+});
+
+document.getElementById('g-stop').addEventListener('click', () => {
+  const res = gen.return("Stopped by user 🚫");
+  gOut.textContent = JSON.stringify(res);
+});
+
+document.getElementById('g-throw').addEventListener('click', () => {
+  try {
+    gen.throw("Burnt the food 🔥");
+  } catch (e) {
+    gOut.textContent = "Generator threw: " + e;
+  }
+});
+
+document.getElementById('g-reset').addEventListener('click', () => {
+  gen = recipe();
+  gOut.textContent = 'Generator reset — Ready';
+});
+
+/* ----------------------------
+   Event Demo Implementation
+   ---------------------------- */
+const eOut = document.getElementById('e-out');
+let timerId = null;
+
+document.getElementById('e-alert').addEventListener('click', () => {
+  eOut.textContent = 'Alert event fired — check UI alert';
+  alert('This is an event-driven alert!');
+});
+
+document.getElementById('e-log').addEventListener('click', () => {
+  const now = new Date().toLocaleTimeString();
+  eOut.textContent = `Log at ${now}`;
+  console.log('Event: Log button clicked at', now);
+});
+
+document.getElementById('e-timer').addEventListener('click', () => {
+  if (timerId) return;
+  let count = 0;
+  timerId = setInterval(() => {
+    count++;
+    eOut.textContent = `Timer tick: ${count}`;
+  }, 1000);
+});
+
+document.getElementById('e-stop-timer').addEventListener('click', () => {
+  if (timerId) {
+    clearInterval(timerId);
+    timerId = null;
+    eOut.textContent = 'Timer stopped';
+  }
+});
+
+/* ----------------------------
+   Combined Demo: Events control generator
+   ---------------------------- */
+const cOut = document.getElementById('c-out');
+let cGen = (function* () {
+  yield 'Step A — initialize 🔧';
+  yield 'Step B — load data 📥';
+  yield 'Step C — finalize ✅';
+  return 'Combined process done 🎉';
+})();
+
+document.getElementById('c-advance').addEventListener('click', () => {
+  const r = cGen.next();
+  cOut.textContent = r.done ? (r.value || 'Finished') : r.value;
+});
+
+document.getElementById('c-reset').addEventListener('click', () => {
+  cGen = (function* () {
+    yield 'Step A — initialize 🔧';
+    yield 'Step B — load data 📥';
+    yield 'Step C — finalize ✅';
+    return 'Combined process done 🎉';
+  })();
+  cOut.textContent = 'Combined generator reset — click Advance';
+});
+</script>
+</body>
+</html>
+

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<body>
+<h2>All Cars in Parking Lot</h2>
+
+<ul id="demo"></ul>
+
+<script>
+const cars = ["Saab", "Volvo", "BMW", "Audi"];
+let text = "";
+
+for (let i = 2; i < cars.length; i++) {
+  text += "<li>Slot " + i + " → " + cars[i] + "</li>";
+}
+
+document.getElementById("demo").innerHTML = text;
+</script>
+
+</body>
+</html>
+

@@ -1,0 +1,100 @@
+<!-- ✅ try / catch / finally
+
+| Block       | Purpose                                      |
+| ----------- | -------------------------------------------- |
+| **try**     | Write code that *might* cause an error       |
+| **catch**   | What to do *when* an error happens           |
+| **finally** | Always runs — whether error happens or not ✅ |
+
+✅ Example: Basic Error Handling
+
+📌 If the code in try is wrong → catch runs -->
+
+<!DOCTYPE html>
+ <html>
+<body>
+  <h2>Try / Catch / Finally - Error Case</h2>
+  <button onclick="testError()">Click to Test Error</button>
+  <p id="result">Hii</p>
+
+  <script>
+    function testError() {
+      
+
+      try {
+       let num = 5;
+        let total = num + 10; 
+        document.getElementById("result").innerHTML =
+          "✅ Result: " + total;
+      }
+      catch(error) {
+        console.log("⚠️ Inside catch block");
+        console.log("Error Name:", error.name);
+        console.log("Error Message:", error.message);
+
+        document.getElementById("result").innerHTML =
+          "⚠️ Error caught: " + error.message +error.name;
+      }
+      finally {
+        console.log("✅ Finally block executed!");
+      
+    }
+
+      console.log("⛔ Function end reached");
+    }
+  </script>
+
+</body>
+</html>
+
+
+<!-- try{
+    function 1 {There is some error}
+}
+catch{
+  error catched
+}
+finally{
+    function 2
+} -->
+
+
+
+<!-- ✅ Different Types of Errors in JavaScript
+
+| Error Type         | When it happens                     | Example             |
+| ------------------ | ----------------------------------- | ------------------- |
+| **ReferenceError** | Using a variable that doesn’t exist | `console.log(x);`   |
+| **TypeError**      | Wrong operation on data type        | `"abc".push("x")`   |
+| **SyntaxError**    | Code grammar mistakes               | `if(true {}`        |
+| **RangeError**     | Number out of valid range           | `new Array(10**20)` |
+
+✅ Using throw (Custom Error Message)
+
+You can create your own errors too! -->
+
+<!-- <!DOCTYPE html>
+<html>
+<body>
+  <h2>Custom Error Using throw</h2>
+  <input id="age" placeholder="Enter age">
+  <button onclick="checkAge()">Submit</button>
+  <p id="msg"></p>
+
+  <script>
+    function checkAge() {
+      let age = document.getElementById("age").value;
+      try {
+        if (age == "") throw "Age cannot empty!";
+        if (isNaN(age)) throw "Age must be a number!";
+        if (age < 18) throw "You must be 18 or older!";
+        document.getElementById("msg").innerHTML = "✅ Access Granted!";
+      }
+      catch(err) {
+        document.getElementById("msg").innerHTML = "⚠️ " + err.name + " " + err.message || err  ;
+      }
+    }
+  </script>
+
+</body>
+</html> -->

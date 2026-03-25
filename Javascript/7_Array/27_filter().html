@@ -1,0 +1,30 @@
+<!-- 3. filter()
+
+👉 Returns only elements that pass a test.
+
+Syntax:
+
+array.filter(function(value, index, array) { return condition })
+Parameters:
+- value: The current element being processed.   
+- index (optional): The index of the current element.
+- array (optional): The array that filter() is being applied to.   
+- condition: A boolean expression to test each element.
+
+Real-Life Example: Selecting students who scored above 60. -->
+
+<!DOCTYPE html>
+<html>
+<body>
+<h2>filter Example</h2>
+<p id="demo"></p>
+
+<script>
+const marks = [45, 62, 80, 30, 95];
+const passed = marks.filter(m => m > 60);
+
+document.getElementById("demo").innerHTML = 
+"Students passed: " + passed;
+</script>
+</body>
+</html>
